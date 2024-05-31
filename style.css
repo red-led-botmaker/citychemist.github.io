@@ -85,6 +85,18 @@ p {
 .brand h1 span2 {
     color: #0d98ba;
 }
+.brand exc1 {
+
+margin-left:30px;
+	color: crimson;
+	font-size: 1.2rem;
+}
+.brand exc2 {
+	color: #0d98ba;
+	font-size: 1.2rem;
+}
+
+
 
 /* Header section */
 #header {
@@ -322,13 +334,12 @@ font-size: 25px;
     padding: 70px 0;
     background: #f4f4f4;
 }
-.fa-badge-check {
-color: #0d98ba;
-}
-
 .review-item .stars {
     color: #FFD700;
     margin-bottom: 10px;
+}
+.fa-badge-check {
+color: #0d98ba;
 }
 .review-item .stars .fa-star {
     margin-right: 5px;
@@ -985,7 +996,7 @@ font-size: 20px;
     .chemist {
  margin-left:10px;
         height: 380px;
-        width: 365px;
+        width: 350px;
     }
     .city {
         width: 25px;
@@ -1003,9 +1014,6 @@ font-size: 20px;
 .city:nth-child(n+6){
     left:calc(83% + 90px);
     opacity: 0;
-}
-.contact {
-margin-top: 120px;
 }
     .contact .contact-item {
         width: 10%;
