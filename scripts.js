@@ -91,3 +91,12 @@ document.getElementById('prev').onclick = function(){
     document.getElementById('yxz').prepend(lists[lists.length - 1]);
 }
   
+document.addEventListener("DOMContentLoaded", function() {
+    const reviewTexts = document.querySelectorAll(".review-text");
+
+    reviewTexts.forEach(reviewText => {
+        reviewText.addEventListener("click", function() {
+            this.classList.toggle("expanded");
+        });
+    });
+});
