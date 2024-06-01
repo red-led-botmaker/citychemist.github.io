@@ -1,3 +1,4 @@
+
 @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
 * {
     padding: 0;
@@ -28,9 +29,9 @@ a {
     justify-content: center;
 }
 img {
-
+border-radius:50%;
     width: 100%;
-    border-radius: 50%;
+    
  object-fit: cover;
 
 }
@@ -130,19 +131,19 @@ margin-left:30px;
     left: 100%;
     top: 0;
     display: flex;
+border-radius: 20px;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+        z-index: 1;
     overflow-x: hidden;
     transition: 0.5s ease left;
     left: 100%;
 }
 #header .nav-list ul.active {
-    left: 0%;
+    left: 50%;
 }
 #header .nav-list ul a {
-    font-size: 2.5rem;
+
+    font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 0.2rem;
     text-decoration: none;
@@ -184,15 +185,6 @@ margin-left:30px;
     cursor: pointer;
     transform: scale(0.8);
     margin-right: 20px;
-}
-#header .hamburger:after {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 100%;
-    border-radius: 50%;
-    border: 3px solid white;
-    animation: hamburger_puls 1s ease infinite;
 }
 #header .hamburger .bar {
     height: 2px;
@@ -311,6 +303,7 @@ font-size: 25px;
     text-align: center;
     margin-bottom: 20px;
 }
+
 .service-item {
     color: #008080;
     gap : 1rem;
@@ -336,10 +329,10 @@ font-size: 25px;
 }
 .review-item .stars {
     color: #FFD700;
-    margin-bottom: 10px;
+    
 }
 .fa-badge-check {
-color: #0d98ba;
+    color: #0d98ba;
 }
 .review-item .stars .fa-star {
     margin-right: 5px;
@@ -348,46 +341,30 @@ color: #0d98ba;
     text-align: center;
     margin-bottom: 20px;
 }
-.svx  {
-margin-left:425px;
+.svx {
+    margin-left: 425px;
     display: inline-block;
     padding: 10px 30px;
-    color:black;
-border-radius: 15px;
+    color: black;
+    border-radius: 15px;
     background-color: transparent;
-    border: 2px solid  #0d98ba;
+    border: 2px solid #0d98ba;
     font-size: 2rem;
-        letter-spacing: 0.1rem;
+    letter-spacing: 0.1rem;
     margin-top: 30px;
     transition: 0.3s ease;
     transition-property: background-color, color;
 }
 .svx:hover {
-    
-    background-color:  #0d98ba;
+    background-color: #0d98ba;
 }
-
 .reviews h3 {
-  text-align: center;
+    text-align: center;
     margin-bottom: 20px;
-color: black;
-font-size: 20px;
-text-align: center;
+    color: black;
+    font-size: 20px;
 }
-.review-item span4 {
-text-align: center;
-
-   color: black;
-        font-size: 1.6rem;
-        margin-top: 10px;
-        line-height: 2.5rem;
-        font-weight: 300;
-        letter-spacing: 0.05rem;
-    display: block;
-    margin-top: 10px;
-    font-style: italic;
-}
-        .review-item {
+.review-item {
     background: white;
     padding: 20px;
     margin-bottom: 20px;
@@ -397,12 +374,133 @@ text-align: center;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.review-item span {
+.review-item span4 {
+    text-align: center;
+    color: black;
+    font-size: 1.6rem;
+    margin-top: 10px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
     display: block;
     margin-top: 10px;
     font-style: italic;
-    text-align: right;
-    color: #666;
+}
+.review-item .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile-pic {
+        
+    margin-right: 10px;
+}
+.review-name {
+font-size: 1.6rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+.review-item.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+.review-text {
+     overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4; /* Limit the text to 5 lines */
+    cursor: pointer;
+}
+.review-text.expanded {
+    white-space: normal;
+}
+.review-text.expanded {
+    -webkit-line-clamp: unset; /* Remove the line clamp when expanded */
+    white-space: normal;
+}
+#rv .reviews {
+    margin-top: 50px;
+    padding: 70px 0;
+    background: #f4f4f4;
+}
+.review-item .stars {
+    color: #FFD700;
+    margin-bottom: 10px;
+    
+}
+.fa-badge-check {
+    color: #0d98ba;
+}
+.review-item .stars .fa-star {
+    margin-right: 5px;
+}
+.reviews h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.svx {
+    margin-left: 425px;
+    display: inline-block;
+    padding: 10px 30px;
+    color: black;
+    border-radius: 15px;
+    background-color: transparent;
+    border: 2px solid #0d98ba;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    margin-top: 30px;
+    transition: 0.3s ease;
+    transition-property: background-color, color;
+}
+.svx:hover {
+    background-color: #0d98ba;
+}
+.reviews h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+    font-size: 20px;
+}
+.review-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.review-item span4 {
+    text-align: center;
+    color: black;
+    font-size: 1.6rem;
+    margin-top: 10px;
+    line-height: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.05rem;
+    display: block;
+    margin-top: 10px;
+    font-style: italic;
+}
+.review-item .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.review-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+.review-item .review-header .stars {
+    margin-left: 10px; /* Optional: Adjust margin for spacing */
 }
 .review-item.fade-in {
     opacity: 1;
@@ -420,11 +518,6 @@ text-align: center;
 #about .col-left {
     width: 250px;
     height: 10px;
-}
-#about .img{
-width: 100%;
-    border-radius: 50%;
- object-fit: cover;
 }
 #about .col-right {
     width: 100%;
@@ -446,6 +539,7 @@ width: 100%;
 }
 #about .col-left .about-img::after {
     content: '';
+border-radius: 50%;
     position: absolute;
     left: -33px;
     top: 19px;
@@ -981,7 +1075,7 @@ border-radius: 50%;
 font-size: 20px;
 }
 .svx  {
- margin-left:40px;
+ margin-left:15px;
 }
  .contact-item .icon {
 		height: 50px;
@@ -1018,5 +1112,4 @@ font-size: 20px;
     .contact .contact-item {
         width: 10%;
     }
-
 }
