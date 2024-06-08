@@ -1,48 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Fade in elements on scroll
-    const fadeInElements = document.querySelectorAll('.service-item');
-
-    function handleScroll() {
-        fadeInElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 100) {
-                element.classList.add('fade-in');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Trigger scroll event on page load to show elements already in view
-});
-document.addEventListener('DOMContentLoaded', () => {
-    // Smooth scrolling for contact button
-    const contactButton = document.querySelector('.hero button');
-    contactButton.addEventListener('click', () => {
-        document.querySelector('footer').scrollIntoView({ behavior: 'smooth' });
-    });
-
-    // Fade-in effect on scroll
-    const fadeInElements = document.querySelectorAll('.fade-in');
-
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    fadeInElements.forEach(element => {
-        observer.observe(element);
-    });
-});
-document.addEventListener('DOMContentLoaded', function () {
-    // Fade in elements on scroll
     const fadeInElements = document.querySelectorAll('.service-item, .review-item, .about-us, .reviews');
 
     function handleScroll() {
@@ -57,32 +14,34 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Trigger scroll event on page load to show elements already in view
 });
+
 const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
 const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
 const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
 const header = document.querySelector('.header.container');
 
 hamburger.addEventListener('click', () => {
-	hamburger.classList.toggle('active');
-	mobile_menu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+    mobile_menu.classList.toggle('active');
 });
-
 
 menu_item.forEach((item) => {
-	item.addEventListener('click', () => {
-		hamburger.classList.toggle('active');
-		mobile_menu.classList.toggle('active');
-	});
+    item.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobile_menu.classList.toggle('active');
+    });
 });
- document.getElementById('next').onclick = function(){
+
+document.getElementById('next').onclick = function() {
     let lists = document.querySelectorAll('.city');
     document.getElementById('yxz').appendChild(lists[0]);
-}
-document.getElementById('prev').onclick = function(){
+};
+
+document.getElementById('prev').onclick = function() {
     let lists = document.querySelectorAll('.city');
     document.getElementById('yxz').prepend(lists[lists.length - 1]);
-}
-  
+};
+
 document.addEventListener("DOMContentLoaded", function() {
     const reviewTexts = document.querySelectorAll(".review-text");
 
@@ -92,13 +51,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
- document.addEventListener('DOMContentLoaded', function() {
+
+document.addEventListener('DOMContentLoaded', function() {
     // Define business hours
     const weekdayHours = { day: 'Mon-Sat', open: 9, close: 22 };
     const sundayHours = { day: 'Sunday', open: 9, close: 14 };
 
     // Define holidays (format: 'MM-DD')
-    const holidays = ['03-28', '12-25']; // Example: Holi on March 28th and Christmas on December 25th
+    const holidays = ['03-14']; // Example: Holi on March 14th
 
     // Get current time and day
     const now = new Date();
@@ -127,17 +87,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check if today is a holiday
     const isHolidayToday = holidays.includes(currentDateString);
 
-    const opensSoon = (todayHours.open - currentHour) === 0 && currentMinutes <= 30;
-    const closesSoon = (todayHours.close - currentHour) === 0 && currentMinutes >= 30;
+    const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) || (currentHour === todayHours.open && currentMinutes < 20);
+    const closesSoon = (todayHours.close - currentHour === 0 && currentMinutes >= 30) || (todayHours.close - currentHour === 1 && currentMinutes >= 0);
 
     if (isHolidayToday) {
-        statusMessage = 'Closed today';
+        statusMessage = 'Closed today on occasion of Holi';
         timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
         statusClass = 'closed';
         statusIcon = '<div class="static-circle red"></div>';
     } else if (opensSoon) {
         statusMessage = 'Opens soon';
-        timeInfoMessage = `Opens today at ${formatTime(todayHours.open)}.`;
+        timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
         statusClass = 'soon';
         statusIcon = '<div class="static-circle yellow beeping"></div>';
     } else if (closesSoon) {
@@ -146,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
         statusClass = 'soon';
         statusIcon = '<div class="static-circle yellow beeping"></div>';
     } else if (currentHour >= todayHours.open && currentHour < todayHours.close) {
-        statusMessage = 'Open now ';
-        timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
+        statusMessage = 'Open now';
+        timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
         statusClass = 'open';
         statusIcon = '<div class="static-circle green beeping"></div>';
     } else {
@@ -155,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (currentHour >= todayHours.close) {
             timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
         } else {
-            timeInfoMessage = `Opens today at ${formatTime(todayHours.open)}.`;
+            timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
         }
         statusClass = 'closed';
         statusIcon = '<div class="static-circle red"></div>';
