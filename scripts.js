@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
         timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
         statusClass = 'closed';
         statusIcon = '<div class="static-circle red"></div>';
-    } else if (opensSoon) {
+    } else if (opensSoon && currentHour < todayHours.open) {
         statusMessage = 'Opens soon';
         timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
         statusClass = 'soon';
         statusIcon = '<div class="static-circle yellow beeping"></div>';
-    } else if (closesSoon) {
+    } else if (closesSoon && currentHour < todayHours.close) {
         statusMessage = 'Closes soon';
         timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
         statusClass = 'soon';
