@@ -1216,3 +1216,22 @@ width: 1800px;
 height:70px;
 background: transparent;
 }
+.brand g {
+    
+    font-weight: bold;
+    color: #8b6508; /* Darker gold */
+    background: linear-gradient(90deg, #8b6508 0%, #ffd700 50%, #ffec8b 50%, #8b6508 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: shine 4s infinite linear;
+}
+
+@keyframes shine {
+    0% {
+        background-position: 200%;
+    }
+    100% {
+        background-position: -200%;
+    }
+}
