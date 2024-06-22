@@ -283,6 +283,11 @@ border-radius: 12px;
     text-transform: uppercase;
     color: white;
 }
+.brand h2 {
+    font-size: 0.9rem;
+   
+    color: white;
+}
 .brand h1 span {
     color: crimson;
 }
