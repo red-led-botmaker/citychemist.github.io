@@ -746,6 +746,9 @@ font-size: 1.6rem;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+#footer .p {
+	text-align: center;
+}
 #footer .social-icon {
 	display: flex;
 	margin-bottom: 30px;
