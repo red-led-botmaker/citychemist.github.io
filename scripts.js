@@ -42,15 +42,6 @@ document.getElementById('prev').onclick = function() {
     document.getElementById('yxz').prepend(lists[lists.length - 1]);
 };
 
-document.addEventListener("DOMContentLoaded", function() {
-    const reviewTexts = document.querySelectorAll(".review-text");
-
-    reviewTexts.forEach(reviewText => {
-        reviewText.addEventListener("click", function() {
-            this.classList.toggle("expanded");
-        });
-    });
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     // Define business hours
@@ -95,12 +86,12 @@ document.addEventListener('DOMContentLoaded', function() {
         timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
         statusClass = 'closed';
         statusIcon = '<div class="static-circle red"></div>';
-    } else if (opensSoon && currentHour < todayHours.open) {
+    } else if (opensSoon) {
         statusMessage = 'Opens soon';
         timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
         statusClass = 'soon';
         statusIcon = '<div class="static-circle yellow beeping"></div>';
-    } else if (closesSoon && currentHour < todayHours.close) {
+    } else if (closesSoon) {
         statusMessage = 'Closes soon';
         timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
         statusClass = 'soon';
@@ -158,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Change border color based on status
     if (statusClass === 'open') {
-        homeItemElement.style.borderColor = 'green';
+        homeItemElement.style.borderColor = '#1db280';
     } else if (statusClass === 'soon') {
         homeItemElement.style.borderColor = 'orange';
     } else {
