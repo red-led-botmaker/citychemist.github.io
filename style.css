@@ -65,7 +65,7 @@ border:2px solid;
 
 font-size: 1.7rem;
 
-            color: green;
+            color: #1db280;
         }
         .closed {
 text-align: center;
@@ -116,7 +116,7 @@ width:2px;
         }
 
         .static-circle.green {
-            background-color: green;
+            background-color: #1db280;
         }
 
         .static-circle.red {
@@ -1201,9 +1201,9 @@ h1.section-title {
 
 }
 .divider {
-margin-top: 30px;
+margin-top: 40px;
 width: 1800px;
-height:70px;
+height:90px;
 background: transparent;
 }
 .brand g {
@@ -1224,4 +1224,39 @@ background: transparent;
     100% {
         background-position: -200%;
     }
+}
+/* Button Reset */
+.button1 {
+margin-top: 45px;
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff; /* White text */
+  background-color: #1db280; /* Primary blue */
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effects */
+.button1:hover {
+  background-color: #19986e; /* Darker blue on hover */
+  transform: translateY(-2px);
+}
+
+/* Active Effects */
+.button1:active {
+  background-color: #004085; /* Even darker blue on active */
+  transform: translateY(0);
+}
+
+/* Focus Effects */
+.button1:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5); /* Blue focus outline */
 }
