@@ -169,27 +169,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullText = review.innerText.trim(); // Get the full review text
 
     if (fullText.length > maxVisibleChars) {
-      const truncatedText = fullText.slice(0, maxVisibleChars); // Truncate the text (without ellipsis here)
+      const truncatedText = fullText.slice(0, maxVisibleChars); // Truncate the text
 
-      // Set the truncated text initially
-      review.innerHTML = truncatedText + '... '; // Append ellipsis directly to the review content
+      // Create a new span for the truncated text
+      const truncatedSpan = document.createElement("span");
+      truncatedSpan.className = "truncated-text";
+      truncatedSpan.innerText = truncatedText + "... "; // Append ellipsis
 
-      // Create the "Read More" button and append it inline
+      // Create the "Read More" button
       const readMoreBtn = document.createElement("span");
-      readMoreBtn.innerText = "Read More";
       readMoreBtn.className = "read-more";
+      readMoreBtn.innerText = "Show More";
 
-      // Append the "Read More" button to the same line as the review
+      // Insert truncated text and button into the review
+      review.innerHTML = ""; // Clear the existing content
+      review.appendChild(truncatedSpan);
       review.appendChild(readMoreBtn);
 
-      // Toggle between full text and truncated text on click
-      readMoreBtn.addEventListener("click", () => {
-        if (review.innerHTML.endsWith("... Read More")) {
-          review.innerHTML = fullText + ' '; // Show full text
-          readMoreBtn.innerText = "Read Less"; // Update button text
+      // Toggle between full text and truncated text on button click
+      readMoreBtn.addEventListener("click", function () {
+        if (readMoreBtn.innerText === "Show More") {
+          // Show full text
+          truncatedSpan.innerText = fullText + " "; // Set full text
+          readMoreBtn.innerText = "Show Less"; // Change button text
         } else {
-          review.innerHTML = truncatedText + '... '; // Show truncated text
-          readMoreBtn.innerText = "Read More"; // Update button text
+          // Show truncated text
+          truncatedSpan.innerText = truncatedText + "... "; // Set truncated text
+          readMoreBtn.innerText = "Show More"; // Change button text
         }
       });
     }
