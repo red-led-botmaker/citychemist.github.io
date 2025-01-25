@@ -618,7 +618,7 @@ border-radius: 20px;
 .read-more {
        cursor: pointer;
      display: inline; /* Ensure it's on the same line as the review text */
-  margin-left: 5px; /* Adds a small gap between text and "Read More" */
+  margin-left: 2px; /* Adds a small gap between text and "Read More" */
     font-weight: bold;
    
  
