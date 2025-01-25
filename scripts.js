@@ -8,12 +8,16 @@ document.addEventListener('DOMContentLoaded', function () {
             if (rect.top < window.innerHeight - 100) {
                 element.classList.add('fade-in');
             }
+
         });
     }
 
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Trigger scroll event on page load to show elements already in view
-});
+
+}
+
+);
 
 const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
 const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
@@ -78,8 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if today is a holiday
     const isHolidayToday = holidays.includes(currentDateString);
 
-    const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) || (currentHour === todayHours.open && currentMinutes < 20);
-    const closesSoon = (todayHours.close - currentHour === 0 && currentMinutes >= 30) || (todayHours.close - currentHour === 1 && currentMinutes >= 0);
+  const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) || (currentHour === todayHours.open && currentMinutes <= 5);
+const closesSoon = (todayHours.close - currentHour === 0 && currentMinutes <= 30) || (todayHours.close - currentHour === 1 && currentMinutes >= 0);
+
 
     if (isHolidayToday) {
         statusMessage = 'Closed today on occasion of Holi';
@@ -155,4 +160,34 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         homeItemElement.style.borderColor = 'red';
     }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const reviews = document.querySelectorAll(".review-content");
+  const maxVisibleChars = 150; // Characters to display initially
+
+  reviews.forEach((review) => {
+    const fullText = review.innerText.trim(); // Get the full review text
+
+    if (fullText.length > maxVisibleChars) {
+      const truncatedText = fullText.slice(0, maxVisibleChars) + "..."; // Truncate the text
+      review.innerText = truncatedText; // Set the truncated text initially
+
+      // Create the "Read More" button
+      const readMoreBtn = document.createElement("span");
+      readMoreBtn.innerText = "Read More";
+      readMoreBtn.className = "read-more";
+      review.parentElement.appendChild(readMoreBtn);
+
+      // Toggle between full text and truncated text on click
+      readMoreBtn.addEventListener("click", () => {
+        if (review.innerText === truncatedText) {
+          review.innerText = fullText; // Show full text
+          readMoreBtn.innerText = "Read Less"; // Update button text
+        } else {
+          review.innerText = truncatedText; // Show truncated text
+          readMoreBtn.innerText = "Read More"; // Update button text
+        }
+      });
+    }
+  });
 });
