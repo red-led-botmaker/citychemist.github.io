@@ -169,22 +169,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const fullText = review.innerText.trim(); // Get the full review text
 
     if (fullText.length > maxVisibleChars) {
-      const truncatedText = fullText.slice(0, maxVisibleChars) + "..."; // Truncate the text
-      review.innerText = truncatedText; // Set the truncated text initially
+      const truncatedText = fullText.slice(0, maxVisibleChars); // Truncate the text (without ellipsis here)
 
-      // Create the "Read More" button
+      // Set the truncated text initially
+      review.innerHTML = truncatedText + '... '; // Append ellipsis directly to the review content
+
+      // Create the "Read More" button and append it inline
       const readMoreBtn = document.createElement("span");
       readMoreBtn.innerText = "Read More";
       readMoreBtn.className = "read-more";
-      review.parentElement.appendChild(readMoreBtn);
+
+      // Append the "Read More" button to the same line as the review
+      review.appendChild(readMoreBtn);
 
       // Toggle between full text and truncated text on click
       readMoreBtn.addEventListener("click", () => {
-        if (review.innerText === truncatedText) {
-          review.innerText = fullText; // Show full text
+        if (review.innerHTML.endsWith("... Read More")) {
+          review.innerHTML = fullText + ' '; // Show full text
           readMoreBtn.innerText = "Read Less"; // Update button text
         } else {
-          review.innerText = truncatedText; // Show truncated text
+          review.innerHTML = truncatedText + '... '; // Show truncated text
           readMoreBtn.innerText = "Read More"; // Update button text
         }
       });
