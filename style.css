@@ -622,12 +622,10 @@ border-radius: 20px;
     font-weight: bold;
    
  
-    transition: color 0.3s ease;
+    
 }
 
-.read-more:hover {
-    color: #0056b3;
-}
+
 
 /* Section Heading */
 .reviews h2 {
