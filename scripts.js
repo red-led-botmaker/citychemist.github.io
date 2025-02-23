@@ -50,7 +50,8 @@ document.getElementById('prev').onclick = function() {
 document.addEventListener('DOMContentLoaded', function() {
     // Define business hours
     const weekdayHours = { day: 'Mon-Sat', open: 9, close: 22 };
-    const sundayHours = { day: 'Sunday', open: 9, close: 14 };
+    const sundayHours = { day: 'Sunday', open: 9, close: 14.25 };
+
 
     // Define holidays (format: 'MM-DD')
     const holidays = ['03-14']; // Example: Holi on March 14th
@@ -82,8 +83,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Check if today is a holiday
     const isHolidayToday = holidays.includes(currentDateString);
 
-  const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) || (currentHour === todayHours.open && currentMinutes <= 5);
-const closesSoon = (todayHours.close - currentHour === 0 && currentMinutes <= 30) || (todayHours.close - currentHour === 1 && currentMinutes >= 0);
+  const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) || 
+                  (currentHour === todayHours.open && currentMinutes <= 5);
+
+  const closesSoon = (currentHour < todayHours.close) &&
+                   ((todayHours.close - currentHour === 0 && currentMinutes <= 30) || 
+                    (todayHours.close - currentHour === 1 && currentMinutes >= 30));
+
 
 
     if (isHolidayToday) {
@@ -101,7 +107,7 @@ const closesSoon = (todayHours.close - currentHour === 0 && currentMinutes <= 30
         timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
         statusClass = 'soon';
         statusIcon = '<div class="static-circle yellow beeping"></div>';
-    } else if (currentHour >= todayHours.open && currentHour < todayHours.close) {
+    } else if (currentHour >= todayHours.open && (currentHour < Math.floor(todayHours.close) || (currentHour === Math.floor(todayHours.close) && currentMinutes < (todayHours.close % 1) * 60))) {
         statusMessage = 'Open now';
         timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
         statusClass = 'open';
