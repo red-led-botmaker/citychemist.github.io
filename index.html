@@ -70,15 +70,17 @@
         </div>
 		<span class="loadercc"></span>
     </div>
+<script>
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("loadercc");
+        loader.classList.add("fade-out"); // Triggers keyframe animation
 
-    <script>
-        window.addEventListener("load", function() {
-        setTimeout(function() {
-            document.getElementById("loadercc").classList.add("hidden");
-			document.getElementById("loader").classList.add("hidden");
-        }, 600); // Minimum 1.2s delay
+        // Ensure loader is removed after animation ends
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 1000); // Match with the fade-out animation duration
     });
-    </script>
+</script>
 
   <!-- Header -->
   <section id="header">
@@ -165,35 +167,35 @@
     <div class="svs">
       <h2>Our Services</h2>
       <div class="service-item">
-        <img src="pm.jpg" alt="Prescription Medicines">
+        <img src="ipm.jpg" alt="Prescription Medicines">
         <div class="text-content">
           <h3>Prescription Medicines </h3>
           <p>Wide range of prescription medicines available.</p>
         </div>
       </div>
       <div class="service-item">
-        <img src="ov.jpg" alt="Over-the-Counter Medicines">
+        <img src="iov.jpg" alt="Over-the-Counter Medicines">
         <div class="text-content">
           <h3>Over-the-Counter Medicines </h3>
           <p>We offer a variety of over-the-counter medicines.</p>
         </div>
       </div>
       <div class="service-item">
-        <img src="HP.jpg" alt="Health Supplements">
+        <img src="ihp.jpg" alt="Health Supplements">
         <div class="text-content">
           <h3>Health Supplements </h3>
           <p>Top quality health supplements to support your well-being.</p>
         </div>
       </div>
            <div class="service-item">
-        <img src="b.jpg" alt="Baby Care">
+        <img src="ib.jpg" alt="Baby Care">
         <div class="text-content">
           <h3>Baby Care </h3>
           <p>We offer a variety of baby care items including diapers, wipes, bottles, teethers etc. From the famous brands including "Pigeon", "MeeMee", "Pampers" and more brands...</p>
         </div>
       </div>
       <div class="service-item">
-        <img src="Sur.jpg" alt="Surgical Wear">
+        <img src="isur.jpg" alt="Surgical Wear">
         <div class="text-content">
           <h3>Surgical Wear </h3>
           <p>We offer a variety of Surgical Wears including Wheel Chairs, Supporters, Commode Chairs, Exercisers, Surgical Belts and much more....</p>
@@ -218,14 +220,14 @@
                   </div>
         <div class="col-right">
           <h2>City Chemist: Your Trusted Pharmacy in Dehradun <i class="fa-solid fa-capsules"></i></h2>
-          <p>Welcome to City Chemist, the premier destination for all your pharmaceutical needs in the heart of Dehradun. Established on October 24, 2014, we have grown to become the largest and most trusted pharmacy in the region, located at C-17, Nehru Colony. Our commitment to excellence and customer satisfaction has made us a cornerstone of the community.</p>
+          <p>Welcome to City Chemist, the premier destination for all your pharmaceutical needs in the heart of Dehradun. Established on October 24, 2014, we have grown to become the largest and most trusted pharmacy in the region, located at C-17, Nehru Colony. Our dedication to excellence and customer satisfaction has made us a vital part of the community.</p>
           <h2>A Premium Experience Like No Other</h2>
-          <p>Step into City Chemist and immerse yourself in a premium, mall-like atmosphere where every detail is meticulously curated to cater to your health and wellness needs. We pride ourselves on offering an extensive selection of branded medicines and pharmaceutical products, ensuring you find everything you're looking for under one roof.</p>
+          <p>Step into City Chemist and experience a premium, mall-like atmosphere where every detail is thoughtfully arranged to meet your health and wellness needs. We take pride in offering a wide range of branded medicines and pharmaceutical products, making sure you can find everything you need in one convenient location.</p>
 
-<p>Our store is designed with your comfort in mind. With well-organized shelves, knowledgeable staff, and a welcoming environment, shopping at City Chemist is a hassle-free experience. Whether you're looking for prescription medications, over-the-counter remedies, or healthcare products, we have it all.</p>
+<p>Our store is designed with your comfort in mind. With neatly organized shelves, friendly staff, and a welcoming environment, shopping at City Chemist is a smooth and enjoyable experience. Whether you need prescription medications, over-the-counter remedies, or healthcare products, we have it all.</p>
           <h2>Unmatched Convenience and Care</h2>
-          <p>At City Chemist, your well-being and convenience are our top priorities. We strive to create a welcoming environment where you can easily find what you need and receive the support you deserve. </p>
-<p>Understanding the importance of convenience, City Chemist provides free parking for all our customers. Our spacious parking area, located beside the shop, ensures that you can visit us without any hassle, making your shopping experience even more enjoyable.</p>
+          <p>At City Chemist, we prioritize your well-being and convenience above all else. We aim to create a friendly atmosphere where you can effortlessly find what you need and receive the support you deserve. </p>
+<p>Understanding the importance of convenience, City Chemist offers free parking for all our customers. Our ample parking area, situated right next to the shop, allows you to visit us without any stress, enhancing your shopping experience.</p>
 <p>Experience the difference at City Chemist - where your health is our priority, and your satisfaction is our mission.</p>
         </div>
       </div>
@@ -239,7 +241,7 @@
 
         <div id="yxz">
           
-            <div class="city" style="background-image: url(1.jpg);">
+            <div class="city" style="background-image: url(i1.jpg);">
                 <div class="content">
                                  </div>
             </div>
@@ -249,22 +251,22 @@
                                         
                 </div>
             </div>
-            <div class="city" style="background-image: url(2.jpg);">
+            <div class="city" style="background-image: url(i2.jpg);">
                 <div class="content">
                                   
   </div>
             </div>
-            <div class="city" style="background-image: url(3.jpg);">
+            <div class="city" style="background-image: url(i3.jpg);">
                 <div class="content">
                     
                 </div>
             </div>
-            <div class="city" style="background-image: url(4.jpg);">
+            <div class="city" style="background-image: url(i4.jpg);">
                 <div class="content">
                                        
                 </div>
             </div>
-            <div class="city" style="background-image: url(5.jpg);">
+            <div class="city" style="background-image: url(i5.jpg);">
                 <div class="content">
                                         
                 </div>
@@ -274,31 +276,35 @@
                                                         </div>
             </div>
 
-<div class="city" style="background-image: url(6.jpg);">
+<div class="city" style="background-image: url(i6.jpg);">
                 <div class="content">
                    
                     
                 </div>
             </div>
-<div class="city" style="background-image: url(7.jpg);">
+<div class="city" style="background-image: url(i7.jpg);">
                 <div class="content">
                                                         </div>
             </div>
-<div class="city" style="background-image: url(8.jpg);">
+<div class="city" style="background-image: url(i8.jpg);">
                 <div class="content">
                                                         </div>
             </div>
-<div class="city" style="background-image: url(10.jpg);">
+<div class="city" style="background-image: url(i9.jpg);">
+                <div class="content">
+                                                        </div>
+            </div>
+<div class="city" style="background-image: url(i10.jpg);">
                 <div class="content">
                                                         </div>
             </div>
 
 
-<div class="city" style="background-image: url(11.jpg);">
+<div class="city" style="background-image: url(i11.jpg);">
                 <div class="content">
                                                         </div>
             </div>
-<div class="city" style="background-image: url(12.jpg);">
+<div class="city" style="background-image: url(i12.jpg);">
                 <div class="content">
                                                         </div>
             </div>
@@ -388,7 +394,7 @@ making one shopping experience. Through the professional and helpful staff, the 
                         <i class="fas fa-star"></i>
                     </div>
                 </h3>
-                <span4>We value your feedback! Please take a moment to leave us a review on Google. All the top reviews are displayed above. </span4>
+                <span4>We value your feedback! Please take a moment to leave us a review on Google Maps. All the top reviews are displayed above. </span4>
                 <a href="https://www.google.com/maps?q=City+Chemist+Dehradun" target="_blank" class="svx">
                     <i class="far fa-comment"></i> Leave a Review
                 </a>
