@@ -62,17 +62,20 @@
 </head>
 
 <body>
-<div id="loader">
+
+<div id="loadercc">
         <div class="logom">
             <div class="c reed">C</div>
             <div class="c blue">C</div>
         </div>
+		<span class="loadercc"></span>
     </div>
 
     <script>
         window.addEventListener("load", function() {
         setTimeout(function() {
-            document.getElementById("loader").classList.add("hidden");
+            document.getElementById("loadercc").classList.add("hidden");
+			document.getElementById("loader").classList.add("hidden");
         }, 1200); // Minimum 1.2s delay
     });
     </script>
