@@ -49,7 +49,7 @@ a {
             font-weight: bold;
             font-family: 'Montserrat', sans-serif;
             font-display: swap;
-
+            opacity: 0;
             
         }
         .reed {
@@ -68,8 +68,12 @@ a {
             60% { opacity: 1; }
             80% { opacity: 0; }
             100% { opacity: 0; }
-        }
-        
+        }.reed {
+			animation: ccAnimation 1.4s infinite;
+		}
+		 .blue{
+			animation: ccAnimation 1.4s infinite 0.14s;
+		}
 .loadercc {
   width: 88px;
   height: 88px;
@@ -78,8 +82,8 @@ a {
   border-top: 4px solid crimson;
   border-right: 4px solid transparent;
   box-sizing: border-box;
-  margin-left: -114px;
-  margin-top: -28px;
+  margin-left: -113px;
+  margin-top: -35px;
   animation: rotation 1s linear infinite;
 }
 .loadercc::after {
