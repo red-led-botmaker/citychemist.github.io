@@ -45,12 +45,12 @@ a {
         }
         .c {
             position: absolute;
-            font-size: 80px;
+            font-size: 40px;
             font-weight: bold;
             font-family: 'Montserrat', sans-serif;
             font-display: swap;
 
-            opacity: 0;
+            
         }
         .reed {
             color: #D94A38;
@@ -60,7 +60,7 @@ a {
         .blue {
             color: #21A0D7;
             left: 20px;
-            top: 20px;
+            top: 13px;
         }
         @keyframes ccAnimation {
             0% { opacity: 0; }
@@ -69,23 +69,17 @@ a {
             80% { opacity: 0; }
             100% { opacity: 0; }
         }
-        .reed {
-            animation: ccAnimation 1.4s infinite;
-        }
-        .blue {
-            animation: ccAnimation 1.4s infinite 0.2s;
-        }
-
+        
 .loadercc {
-  width: 188px;
-  height: 188px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   display: inline-block;
-  border-top: 4px solid #FFF;
+  border-top: 4px solid crimson;
   border-right: 4px solid transparent;
   box-sizing: border-box;
-  margin-left: -144px;
-  margin-top: 23px;
+  margin-left: -114px;
+  margin-top: -28px;
   animation: rotation 1s linear infinite;
 }
 .loadercc::after {
@@ -94,10 +88,10 @@ a {
   position: absolute;
   left: 0;
   top: 0;
-  width: 188px;
-  height: 188px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  border-left: 4px solid #1db280;
+  border-left: 4px solid #0d98ba;
   border-bottom: 4px solid transparent;
   animation: rotation 0.5s linear infinite reverse;
 }
