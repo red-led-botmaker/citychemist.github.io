@@ -34,9 +34,17 @@ a {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Only for smooth appearance */
 }
-#loadercc.hidden {
-    display: none;
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+#loadercc.fade-out {
+    animation: fadeOut 1s forwards;
 }
 .logom {
             position: relative;
@@ -58,7 +66,7 @@ a {
             top: 0;
         }
         .blue {
-            color: #21A0D7;
+            color: #0d98ba;
             left: 20px;
             top: 13px;
         }
@@ -393,6 +401,7 @@ width: 10 px;
     }
 
     .section-title {
+		font-weight: 600;
       font-size: 2.5rem;
       margin-bottom: 30px;
     }
@@ -427,12 +436,13 @@ border-radius: 10px;
 
     .col-right h2 {
       font-size: 1.8rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.2rem;
       margin-bottom: 10px;
     }
 
     .col-right p {
+		font-weight: 300;
       margin-bottom: 20px;
     }
 
@@ -466,7 +476,7 @@ border-radius: 10px;
 }
 #header .header {
     min-height: 8vh;
-   background-color:#29323c;
+   background-color:#363737;
 
     }
 #header .nav-bar {
@@ -773,7 +783,7 @@ border-radius: 20px;
 }
 /* Footer */
 #footer {
-	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	background-color: #363737;
 }
 #footer .footer {
 	min-height: 200px;
@@ -882,26 +892,7 @@ font-size: 2.5rem;
 	}
 	/* End Services Section */
 
-	/* Project */
-	#projects .project-item {
-		flex-direction: row;
-	}
-	#projects .project-item:nth-child(even) {
-		flex-direction: row-reverse;
-	}
-	#projects .project-item {
-		height: 400px;
-		margin: 0;
-		width: 100%;
-		border-radius: 0;
-	}
-	#projects .all-projects .project-info {
-		height: 100%;
-	}
-	#projects .all-projects .project-img {
-		height: 100%;
-	}
-	/* End Project */
+	
 
 	
 	/* contact  */
@@ -1293,6 +1284,7 @@ background: transparent;
 margin-top: 45px;
   display: inline-block;
   padding: 12px 24px;
+  font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
