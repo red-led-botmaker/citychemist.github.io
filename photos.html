@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ <link
+      rel="stylesheet"
+      data-purpose="Layout StyleSheet"
+      title="Web Awesome"
+      href="/css/app-wa-d53d10572a0e0d37cb8d614a3f177a0c.css?vsn=d"
+    >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.5.2/css/all.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-thin.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-solid.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-regular.css"
+      >
+
+      <link
+        rel="stylesheet"
+        href="https://site-assets.fontawesome.com/releases/v6.5.2/css/sharp-light.css"
+      >
+    <title>Photos - City Chemist</title>
+    <link rel="icon" href="logoc.png" type="image/png">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+<div id="loadercc">
+        <div class="logom">
+            <div class="c reed">C</div>
+            <div class="c blue">C</div>
+        </div>
+		<span class="loadercc"></span>
+    </div>
+<script>
+    window.addEventListener("load", function () {
+        const loader = document.getElementById("loadercc");
+        loader.classList.add("fade-out"); // Triggers keyframe animation
+
+        // Ensure loader is removed after animation ends
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 1000); // Match with the fade-out animation duration
+    });
+</script>
+    <div class="main-container">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-left">
+          <button id="sidebar-toggle" class="sidebar-toggle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+              <path
+                d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <div class="header-center">
+          <img src="logo.png" alt="City Chemist Logo" class="header-logo" />
+        </div>
+        <div class="header-right">
+          <!-- Theme toggle removed -->
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar" class="fixed-sidebar hidden">
+        <ul class="sidebar-list">
+          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Home</a></li>
+          <li class="sidebar-item"><a href="about.html" class="sidebar-link">About</a></li>
+                    <li class="sidebar-item"><a href="FAQs.html" class="sidebar-link">FAQs</a></li>
+          <li class="sidebar-item"><a href="contact.html" class="sidebar-link">Contact</a></li>
+          <li class="sidebar-item active"><a href="photos.html" class="sidebar-link">Photos</a></li>
+
+        </ul>
+      </div>
+  <body>
+    <div class="container1">
+      <div>
+        <div class="header1">
+                    </div>
+          <h2 class="title2">Photo Gallery</h2>
+        </div>
+        <div class="filter-bar">
+          <button class="filter-button active" data-filter="all">All</button>
+          <button class="filter-button" data-filter="Exterior">Exterior</button>
+          <button class="filter-button" data-filter="Ground Floor">Ground Floor</button>
+          <button class="filter-button" data-filter="1st Floor">1st Floor</button>
+        </div>
+        <div class="gallery">
+
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i1.jpg');"></div>
+          </div>
+
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i2.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i3.jpg');"></div>
+          </div>
+
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i4.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i5.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i6.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i7.jpg');"></div>
+          </div>
+         
+          <div class="gallery-item" data-category="Ground Floor">
+            <div class="gallery-image" style="background-image: url('i9.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="1st Floor">
+            <div class="gallery-image" style="background-image: url('i8.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="1st Floor">
+            <div class="gallery-image" style="background-image: url('i10.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="1st Floor">
+            <div class="gallery-image" style="background-image: url('i11.jpg');"></div>
+          </div>
+          <div class="gallery-item" data-category="1st Floor">
+            <div class="gallery-image" style="background-image: url('i12.jpg');"></div>
+          </div>
+            <div class="gallery-item" data-category="Exterior">
+            <div class="gallery-image" style="background-image: url('out.jpg');"></div>
+          </div>
+</div>
+      </div>
+      <div><div class="footer-spacer"></div></div>
+    </div>
+    <div class="fullscreen-overlay">
+      <button class="fullscreen-exit">Exit</button>
+      <img class="fullscreen-image" src="" alt="Full-screen image" />
+    </div>
+<footer class="footer">
+          <div class="footer-links">
+            <p class="footer-link" >Experience the difference at City Chemist - where your health is our priority, and your satisfaction is our mission.</p>            
+          </div>
+          <div class="footer-socials">
+            <a href="https://wa.me/+919719156959" class="social-icon">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:citychemist31@gmail.com" class="social-icon">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="tel:+919719156959" class="social-icon">
+              <i class="fa-light fa-phone"></i>
+            </a>
+            <a href="https://maps.app.goo.gl/U8eF2ad7RJfA4qww9" class="social-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </a>
+          </div>
+          <p class="footer-text">© 2025 City Chemist. All rights reserved.</p>
+        </footer>
+        <div class="footer-spacer"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+
+    <script>
+      // Filter functionality
+      const filterButtons = document.querySelectorAll('.filter-button');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // Add active class to clicked button
+          button.classList.add('active');
+
+          const filter = button.dataset.filter;
+          galleryItems.forEach(item => {
+            if (filter === 'all' || item.dataset.category === filter) {
+              item.style.display = 'flex';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Full-screen image functionality
+      const galleryImages = document.querySelectorAll('.gallery-image');
+      const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
+      const fullscreenImage = document.querySelector('.fullscreen-image');
+      const exitButton = document.querySelector('.fullscreen-exit');
+
+      galleryImages.forEach(image => {
+        image.addEventListener('click', () => {
+          const bgImage = image.style.backgroundImage.slice(5, -2);
+          fullscreenImage.src = bgImage;
+          fullscreenOverlay.style.display = 'flex';
+        });
+      });
+
+      exitButton.addEventListener('click', () => {
+        fullscreenOverlay.style.display = 'none';
+        fullscreenImage.src = '';
+      });
+
+      // Touch support for mobile
+      galleryImages.forEach(image => {
+        image.addEventListener('touchstart', () => {
+          const bgImage = image.style.backgroundImage.slice(5, -2);
+          fullscreenImage.src = bgImage;
+          fullscreenOverlay.style.display = 'flex';
+        });
+      });
+    </script>
+  </body>
+</html>
