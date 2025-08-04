@@ -85,17 +85,16 @@
       </div>
 
       <!-- Sidebar -->
-      <div id="sidebar" class="fixed-sidebar hidden">
-        <ul class="sidebar-list">
-          <li class="sidebar-item"><a href="index.html" class="sidebar-link">Home</a></li>
-          <li class="sidebar-item"><a href="about.html" class="sidebar-link">About</a></li>
-                    <li class="sidebar-item"><a href="FAQs.html" class="sidebar-link">FAQs</a></li>
-          <li class="sidebar-item"><a href="contact.html" class="sidebar-link">Contact</a></li>
-          <li class="sidebar-item active"><a href="photos.html" class="sidebar-link">Photos</a></li>
+       <div id="sidebar" class="fixed-sidebar hidden">
+  <ul class="sidebar-list">
+    <li class="sidebar-item" data-link="/index.html">Home</li>
+    <li class="sidebar-item" data-link="/about.html">About</li>
+    <li class="sidebar-item" data-link="/FAQs.html">FAQs</li>
+    <li class="sidebar-item" data-link="/contact.html">Contact</li>
+    <li class="sidebar-item active" data-link="/photos.html">Photos</li>
+  </ul>
+</div>
 
-        </ul>
-      </div>
-  <body>
     <div class="container1">
       <div>
         <div class="header1">
@@ -156,14 +155,50 @@
       </div>
       <div><div class="footer-spacer"></div></div>
     </div>
-    <div class="fullscreen-overlay">
-      <button class="fullscreen-exit">Exit</button>
-      <img class="fullscreen-image" src="" alt="Full-screen image" />
-    </div>
-<footer class="footer">
+    <div class="fullscreen-carousel" style="display: none;">
+  <div class="carousel-exit"><i class="fa-regular fa-angle-left"></i></div>
+  <div class="carousel-filters">
+    
+  <button class="carousel-filter active" data-filter="all">All</button>
+  <button class="carousel-filter" data-filter="Exterior">Exterior</button>
+  <button class="carousel-filter" data-filter="Ground Floor">Ground Floor</button>
+  <button class="carousel-filter" data-filter="1st Floor">1st Floor</button>
+</div>
+
+  <div class="carousel-container">
+    <!-- Slides will be injected here by JS -->
+  </div>
+  <div class="carousel-ui">
+    <span class="carousel-tag">Tag</span>
+    <span class="carousel-index">1 / 1</span>
+  </div>
+</div>
+
+
+ <footer class="footer">
+          <div class="footer-links">
+            <p class="footer-link" >------------------------------------------</p>            
+          </div>
           <div class="footer-links">
             <p class="footer-link" >Experience the difference at City Chemist - where your health is our priority, and your satisfaction is our mission.</p>            
           </div>
+          <div class="footer-links">
+            <p class="footer-link" >------------------------------------------</p>            
+          </div>
+           <div class="footer-socials">
+          <a href="index.html" class="footer-links">Home</a>
+          <a href="contact.html" class="footer-links">Contact Us</a>
+          
+        </div>
+        
+        <div class="footer-socials">
+            <a href="FAQs.html" class="footer-links">FAQs</a>
+            <a href="about.html" class="footer-links">About Us</a>
+          </div>
+          <div class="footer-links">
+            <p class="footer-link" >------------------------------------------</p>            
+          </div>
+          <div class="footer-links"></div>
           <div class="footer-socials">
             <a href="https://wa.me/+919719156959" class="social-icon">
               <i class="fab fa-whatsapp"></i>
@@ -178,63 +213,12 @@
               <i class="fas fa-map-marker-alt"></i>
             </a>
           </div>
+          
           <p class="footer-text">© 2025 City Chemist. All rights reserved.</p>
         </footer>
         <div class="footer-spacer"></div>
       </div>
     </div>
     <script src="script.js"></script>
-
-    <script>
-      // Filter functionality
-      const filterButtons = document.querySelectorAll('.filter-button');
-      const galleryItems = document.querySelectorAll('.gallery-item');
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // Remove active class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove('active'));
-          // Add active class to clicked button
-          button.classList.add('active');
-
-          const filter = button.dataset.filter;
-          galleryItems.forEach(item => {
-            if (filter === 'all' || item.dataset.category === filter) {
-              item.style.display = 'flex';
-            } else {
-              item.style.display = 'none';
-            }
-          });
-        });
-      });
-
-      // Full-screen image functionality
-      const galleryImages = document.querySelectorAll('.gallery-image');
-      const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
-      const fullscreenImage = document.querySelector('.fullscreen-image');
-      const exitButton = document.querySelector('.fullscreen-exit');
-
-      galleryImages.forEach(image => {
-        image.addEventListener('click', () => {
-          const bgImage = image.style.backgroundImage.slice(5, -2);
-          fullscreenImage.src = bgImage;
-          fullscreenOverlay.style.display = 'flex';
-        });
-      });
-
-      exitButton.addEventListener('click', () => {
-        fullscreenOverlay.style.display = 'none';
-        fullscreenImage.src = '';
-      });
-
-      // Touch support for mobile
-      galleryImages.forEach(image => {
-        image.addEventListener('touchstart', () => {
-          const bgImage = image.style.backgroundImage.slice(5, -2);
-          fullscreenImage.src = bgImage;
-          fullscreenOverlay.style.display = 'flex';
-        });
-      });
-    </script>
   </body>
 </html>
