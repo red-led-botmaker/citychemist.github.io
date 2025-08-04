@@ -158,7 +158,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterButtonsCarousel = document.querySelectorAll('.carousel-filter');
 
   let slides = [], slidesFiltered = [], currentIndex = 0;
-  let startX = 0, isDragging = false, wasSwipe = false;
+let startX = 0, isDragging = false, wasSwipe = false;
+let swipeSuppressClick = false;
+
 const prevArrow = document.querySelector('.carousel-prev');
 const nextArrow = document.querySelector('.carousel-next');
 
@@ -216,10 +218,11 @@ nextArrow?.addEventListener('click', nextSlide);
   buildSlides();
 
   galleryImages.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      if (wasSwipe) return;
-      openCarousel(i);
-    });
+   img.addEventListener('click', () => {
+  if (swipeSuppressClick) return;
+  openCarousel(i);
+});
+
   });
 
   exitBtn?.addEventListener('click', () => {
@@ -248,7 +251,11 @@ setTimeout(() => {
   carouselContainer.addEventListener('touchmove', e => {
     if (!isDragging) return;
     const moveX = e.touches[0].clientX - startX;
-    if (Math.abs(moveX) > 10) wasSwipe = true;
+   if (Math.abs(moveX) > 10) {
+  wasSwipe = true;
+  swipeSuppressClick = true;
+}
+
     carouselContainer.style.transform = `translateX(calc(-${currentIndex * 100}vw + ${moveX}px))`;
   });
 
@@ -259,6 +266,8 @@ setTimeout(() => {
     if (deltaX > 50) prevSlide();
     else if (deltaX < -50) nextSlide();
     else updateCarouselPosition();
+    setTimeout(() => swipeSuppressClick = false, 200);
+
   });
 
   filterButtonsCarousel.forEach(btn => {
