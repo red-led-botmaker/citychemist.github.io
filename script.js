@@ -59,29 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ================= Weekly Chart =================
-  const dataByDay = {
-    "Mondays": [7.5, 15, 22, 28, 26, 27, 28, 32, 47, 53, 56, 63, 40, 35],
-    "Tuesdays": [7.5, 13, 20, 25, 24, 26, 27, 30, 43, 50, 53, 57, 38, 33],
-    "Wednesdays": [6.2, 12, 19, 24, 22, 23, 25, 28, 40, 48, 50, 55, 37, 32],
-    "Thursdays": [6.3, 13, 20, 24, 23, 24, 26, 29, 42, 51, 52, 56, 37, 33],
-    "Fridays": [6.9, 14, 20, 25, 24, 25, 26, 28, 43, 50, 53, 60, 36, 32],
-    "Saturdays": [7.5, 14.3, 21, 27, 25, 26, 29, 33, 46, 52, 55, 61, 40, 35],
-    "Sundays": [7.3, 13, 17, 28, 32, 34, 0, 0, 0, 0, 0, 0, 0, 0]
-  };
-
-  const dropdown = document.querySelector(".dropdown");
-  const bars = document.querySelectorAll(".bar");
-  const days = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
-  const today = days[new Date().getDay()];
-  if (dropdown) dropdown.value = today;
-
-  function updateChart(day) {
-    const values = dataByDay[day];
-    bars.forEach((bar, i) => bar.style.height = values[i] + "%");
-  }
-
-  updateChart(today);
-  dropdown?.addEventListener("change", () => updateChart(dropdown.value));
+ 
 
   // ================= Business Hours Logic =================
   const weekdayHours = { open: 9, close: 22 };
@@ -180,9 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const filterButtonsCarousel = document.querySelectorAll('.carousel-filter');
 
   let slides = [], slidesFiltered = [], currentIndex = 0;
-let startX = 0, isDragging = false, wasSwipe = false;
-let swipeSuppressClick = false;
+  let startX = 0, isDragging = false, wasSwipe = false;
+const prevArrow = document.querySelector('.carousel-prev');
+const nextArrow = document.querySelector('.carousel-next');
 
+prevArrow?.addEventListener('click', prevSlide);
+nextArrow?.addEventListener('click', nextSlide);
 
   function buildSlides() {
     slides = [];
@@ -205,8 +186,9 @@ let swipeSuppressClick = false;
   function openCarousel(index) {
     currentIndex = index;
     renderSlides();
-    carousel.style.display = 'flex';
+    carousel.classList.add('visible');
     document.body.style.overflow = 'hidden';
+
   }
 
   function updateCarouselPosition() {
@@ -235,14 +217,18 @@ let swipeSuppressClick = false;
 
   galleryImages.forEach((img, i) => {
     img.addEventListener('click', () => {
-  if (swipeSuppressClick) return;
-  openCarousel(i);
-});
-
+      if (wasSwipe) return;
+      openCarousel(i);
+    });
   });
 
   exitBtn?.addEventListener('click', () => {
-    carousel.style.display = 'none';
+   carousel.classList.remove('visible');
+setTimeout(() => {
+  document.body.style.overflow = 'auto';
+}, 350); // match CSS transition time
+
+
     document.body.style.overflow = 'auto';
   });
 
@@ -262,11 +248,7 @@ let swipeSuppressClick = false;
   carouselContainer.addEventListener('touchmove', e => {
     if (!isDragging) return;
     const moveX = e.touches[0].clientX - startX;
-    if (Math.abs(moveX) > 10) {
-  wasSwipe = true;
-  swipeSuppressClick = true;
-}
-
+    if (Math.abs(moveX) > 10) wasSwipe = true;
     carouselContainer.style.transform = `translateX(calc(-${currentIndex * 100}vw + ${moveX}px))`;
   });
 
@@ -277,8 +259,6 @@ let swipeSuppressClick = false;
     if (deltaX > 50) prevSlide();
     else if (deltaX < -50) nextSlide();
     else updateCarouselPosition();
-    setTimeout(() => swipeSuppressClick = false, 200);
-
   });
 
   filterButtonsCarousel.forEach(btn => {
@@ -294,4 +274,3 @@ let swipeSuppressClick = false;
   });
 
 });
-
