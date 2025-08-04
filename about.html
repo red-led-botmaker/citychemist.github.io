@@ -262,15 +262,18 @@
 <section id ="graph">
 <div class="headerxx">
     <h2>Popular times</h2>
-   <select class="dropdown">
-  <option>Mondays</option>
-  <option>Tuesdays</option>
-  <option>Wednesdays</option>
-  <option>Thursdays</option>
-  <option>Fridays</option>
-  <option>Saturdays</option>
-  <option>Sundays</option>
-</select>
+   <div class="custom-dropdown">
+  <div class="selected-day">Mondays</div>
+  <ul class="dropdown-options">
+    <li data-value="Mondays">Mondays</li>
+    <li data-value="Tuesdays">Tuesdays</li>
+    <li data-value="Wednesdays">Wednesdays</li>
+    <li data-value="Thursdays">Thursdays</li>
+    <li data-value="Fridays">Fridays</li>
+    <li data-value="Saturdays">Saturdays</li>
+    <li data-value="Sundays">Sundays</li>
+  </ul>
+</div>
 
   </div>
 
@@ -299,7 +302,56 @@
     <span>6pm</span>
     <span>9pm</span>
   </div>
+<script> const dataByDay = {
+    "Mondays": [7.5, 15, 22, 28, 26, 27, 28, 32, 47, 53, 56, 63, 40, 35],
+    "Tuesdays": [7.5, 13, 20, 25, 24, 26, 27, 30, 43, 50, 53, 57, 38, 33],
+    "Wednesdays": [6.2, 12, 19, 24, 22, 23, 25, 28, 40, 48, 50, 55, 37, 32],
+    "Thursdays": [6.3, 13, 20, 24, 23, 24, 26, 29, 42, 51, 52, 56, 37, 33],
+    "Fridays": [6.9, 14, 20, 25, 24, 25, 26, 28, 43, 50, 53, 60, 36, 32],
+    "Saturdays": [7.5, 14.3, 21, 27, 25, 26, 29, 33, 46, 52, 55, 61, 40, 35],
+    "Sundays": [7.3, 13, 17, 28, 32, 34, 0, 0, 0, 0, 0, 0, 0, 0]
+  };
 
+  const dropdown = document.querySelector(".dropdown");
+  const bars = document.querySelectorAll(".bar");
+  const days = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
+  const today = days[new Date().getDay()];
+  if (dropdown) dropdown.value = today;
+
+  function updateChart(day) {
+    const values = dataByDay[day];
+    bars.forEach((bar, i) => bar.style.height = values[i] + "%");
+  }
+
+  updateChart(today);
+  dropdown?.addEventListener("change", () => updateChart(dropdown.value));
+    const customDropdown = document.querySelector('.custom-dropdown');
+const selectedDay = customDropdown.querySelector('.selected-day');
+const optionsList = customDropdown.querySelector('.dropdown-options');
+const allOptions = optionsList.querySelectorAll('li');
+
+selectedDay.addEventListener('click', () => {
+  optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
+});
+
+allOptions.forEach(option => {
+  option.addEventListener('click', () => {
+    selectedDay.textContent = option.textContent;
+    optionsList.style.display = 'none';
+
+    // Your chart update logic
+    updateChart(option.dataset.value);
+  });
+});
+
+// Optional: close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!customDropdown.contains(e.target)) {
+    optionsList.style.display = 'none';
+  }
+});
+
+  </script>
   <div class="dots">
     <div class="dot active"></div>
     <div class="dot"></div>
