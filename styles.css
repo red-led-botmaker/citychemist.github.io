@@ -4,16 +4,11 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
-:focus {
+*:focus {
   outline: none;
 }
-
-button:focus,
-a:focus,
-img:focus,
-.gallery-image:focus,
-.fullscreen-carousel *:focus {
-  outline: none;
+a, button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main-container {
@@ -1347,3 +1342,4 @@ backdrop-filter: blur(2px);
     font-size: 16px;
   }
 }
+
