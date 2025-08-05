@@ -4,6 +4,7 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+
 *{
 -webkit-tap-highlight-color:rgba(255,255,255,0) !important;
 -webkit-focus-ring-color:rgba(255,255,255,0) !important;
@@ -1268,6 +1269,116 @@ backdrop-filter: blur(2px);
     .bar:hover {
       background-color: #6fc3c9;
     }
+    /* Bar chart animation */
+
+
+.bar::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 10;
+}
+
+/* Show tooltip on hover */
+.bar:hover::after {
+  opacity: 1;
+}
+
+/* Current hour bar (highlighted) */
+.bar.current-hour {
+  background-color: #3399ff;
+}
+
+/* Dropdown improvements */
+.dropdown-options {
+  display: none;
+  max-height: none;        /* Remove scroll */
+  padding: 6px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  z-index: 100;
+}
+
+.dropdown-options li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Highlight today */
+.dropdown-options li.today {
+  border-left: 4px solid #3399ff;
+}
+
+/* Highlight selected day */
+.dropdown-options li.active {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.selected-day {
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+  background: white;
+  border-radius: 4px;
+}
+
+.dropdown-options {
+  list-style: none;
+  position: absolute;
+  top: calc(100% + 6px); /* space below selected-day */
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  display: none;
+  z-index: 100;
+  width: max-content;
+  min-width: 100%;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.dropdown-options li {
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.dropdown-options li:hover {
+  background: #f5f5f5;
+}
+
+.dropdown-options li.active {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+.dropdown-options li.today {
+  border-left: 4px solid #3399ff;
+}
+
+
 
     .labels {
       display: flex;
@@ -1341,6 +1452,3 @@ backdrop-filter: blur(2px);
     font-size: 16px;
   }
 }
-
-
-
