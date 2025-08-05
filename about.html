@@ -369,23 +369,63 @@ allOptions.forEach(option => {
 updateChart(today);
 
 // Dropdown behavior
+
+
 selectedDay.addEventListener('click', () => {
-  optionsList.style.display = optionsList.style.display === 'block' ? 'none' : 'block';
+  const isOpen = optionsList.style.display === 'block';
+
+  if (isOpen) {
+    // Trigger close animation
+    optionsList.classList.remove('animate');
+    optionsList.classList.add('closing');
+
+    // After animation ends, hide it completely
+    setTimeout(() => {
+      optionsList.style.display = 'none';
+      optionsList.classList.remove('closing');
+    }, 300); // same as CSS transition duration
+  } else {
+    optionsList.style.display = 'block';
+
+    // Wait for next repaint to apply animation
+    requestAnimationFrame(() => {
+      optionsList.classList.add('animate');
+    });
+  }
 });
 
 allOptions.forEach(option => {
   option.addEventListener('click', () => {
     updateChart(option.dataset.value);
-    optionsList.style.display = 'none';
+
+    optionsList.classList.remove('animate');
+    optionsList.classList.add('closing');
+
+    setTimeout(() => {
+      optionsList.style.display = 'none';
+      optionsList.classList.remove('closing');
+    }, 300); // match the CSS transition duration
   });
 });
 
+
 document.addEventListener('click', (e) => {
   if (!customDropdown.contains(e.target)) {
-    optionsList.style.display = 'none';
+    if (optionsList.style.display === 'block') {
+      optionsList.classList.remove('animate');
+      optionsList.classList.add('closing');
+      setTimeout(() => {
+        optionsList.style.display = 'none';
+        optionsList.classList.remove('closing');
+      }, 300);
+    }
   }
 });
+
+
+
 </script>
+	
   <div class="dots">
     <div class="dot active"></div>
     <div class="dot"></div>
