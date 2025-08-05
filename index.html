@@ -174,7 +174,7 @@
 <div class="headerxx">
  
     <h2>Popular times</h2>
-    <div class="custom-dropdown">
+     <div class="custom-dropdown">
   <div class="selected-day">Mondays</div>
   <ul class="dropdown-options">
     <li data-value="Mondays">Mondays</li>
@@ -231,47 +231,48 @@ const selectedDay = customDropdown.querySelector('.selected-day');
 const optionsList = customDropdown.querySelector('.dropdown-options');
 const allOptions = optionsList.querySelectorAll('li');
 
-// Define time mapping for bars (assuming first = 9am, each bar = 1 hour)
+// Base time per bar: starting from 9am
 const baseHour = 9;
+
+function formatHour(hour24) {
+  const period = hour24 >= 12 ? 'PM' : 'AM';
+  const hour = ((hour24 + 11) % 12 + 1); // 0→12, 13→1
+  return `${hour} ${period}`;
+}
 
 function updateChart(day) {
   const values = dataByDay[day];
   const currentHour = new Date().getHours();
+  const today = days[new Date().getDay()];
 
   bars.forEach((bar, i) => {
+    const hour = baseHour + i;
     bar.style.height = values[i] + "%";
+    bar.setAttribute("data-tooltip", `${formatHour(hour)}: ${values[i]}%`);
 
-    const barHour = baseHour + i;
-    // Highlight only if selected day == today and bar hour matches current hour
-    const isToday = day === days[new Date().getDay()];
-    if (isToday && barHour === currentHour) {
-      bar.classList.add("current-hour");
-    } else {
-      bar.classList.remove("current-hour");
-    }
+    // Highlight only if selected day = today and time matches
+    const isNow = (day === today && hour === currentHour);
+    bar.classList.toggle("current-hour", isNow);
   });
 
   selectedDay.textContent = day;
 
-  // Update dropdown highlighting
   allOptions.forEach(option => {
     option.classList.toggle('active', option.dataset.value === day);
   });
 }
 
-// Detect today's day string
+// Day mapping
 const days = ["Sundays", "Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays"];
-const jsDay = new Date().getDay(); // 0 = Sunday, 6 = Saturday
-const today = days[jsDay];
+const today = days[new Date().getDay()];
 
-// Add "today" visual marker in dropdown list
+// Mark today in dropdown
 allOptions.forEach(option => {
   if (option.dataset.value === today) {
     option.classList.add("today");
   }
 });
 
-// Auto-load chart for today
 updateChart(today);
 
 // Dropdown behavior
@@ -292,7 +293,7 @@ document.addEventListener('click', (e) => {
   }
 });
 </script>
-
+	
   <div class="dots">
     <div class="dot active"></div>
     <div class="dot"></div>
@@ -495,5 +496,6 @@ document.addEventListener('click', (e) => {
     <script src="script.js"></script>
   </body>
 </html>
+
 
 
