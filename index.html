@@ -217,13 +217,13 @@
   </div>
 <script>
 const dataByDay = {
-  "Mondays": [7.5, 15, 22, 28, 26, 27, 28, 32, 47, 53, 56, 63, 40, 35],
-  "Tuesdays": [7.5, 13, 20, 25, 24, 26, 27, 30, 43, 50, 53, 57, 38, 33],
-  "Wednesdays": [6.2, 12, 19, 24, 22, 23, 25, 28, 40, 48, 50, 55, 37, 32],
-  "Thursdays": [6.3, 13, 20, 24, 23, 24, 26, 29, 42, 51, 52, 56, 37, 33],
-  "Fridays": [6.9, 14, 20, 25, 24, 25, 26, 28, 43, 50, 53, 60, 36, 32],
-  "Saturdays": [7.5, 14.3, 21, 27, 25, 26, 29, 33, 46, 52, 55, 61, 40, 35],
-  "Sundays": [7.3, 13, 17, 28, 32, 34, 0, 0, 0, 0, 0, 0, 0, 0]
+  "Mondays": [7.5, 15, 22, 28, 26, 27, 28, 32, 47, 53, 56, 63, 39, 0],
+  "Tuesdays": [7.5, 13, 20, 25, 24, 26, 27, 30, 43, 50, 53, 57, 34, 0],
+  "Wednesdays": [6.2, 12, 19, 24, 22, 23, 25, 28, 40, 48, 50, 55, 31, 0],
+  "Thursdays": [6.3, 13, 20, 24, 23, 24, 26, 29, 42, 51, 52, 56, 32, 0],
+  "Fridays": [6.9, 14, 20, 25, 24, 25, 26, 28, 43, 50, 53, 60, 33, 0],
+  "Saturdays": [7.5, 14.3, 21, 27, 25, 26, 29, 33, 46, 52, 55, 61, 36, 0],
+  "Sundays": [7.3, 13, 17, 28, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 };
 
 const bars = document.querySelectorAll(".bar");
@@ -334,12 +334,7 @@ document.addEventListener('click', (e) => {
 
 </script>
 	
-  <div class="dots">
-    <div class="dot active"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-    <div class="dot"></div>
-  </div>
+
   <div class="inac">Popular times are prone to inaccuracy.</div>
 
 </section>
@@ -402,7 +397,7 @@ document.addEventListener('click', (e) => {
             </div>
           </div>
           <div class="section-button">
-            <a style="text-decoration:none" href="photos.html" class="btn btn-secondary">Show More</a>
+            <a style="text-decoration:none" href="photos.html" class="btn btn-secondary">View More</a>
           </div>
         </section>
 
@@ -421,14 +416,14 @@ document.addEventListener('click', (e) => {
 <p class="contact-value">citychemist31@gmail.com</p>
 </div>
 <div class="section-button">
-            <a style="text-decoration:none" href="contact.html" class="btn btn-secondary">More...</a>
+            <a style="text-decoration:none" href="contact.html" class="btn btn-secondary">View More</a>
           </div>
                               </section>
 
 
 <!-- Add this section after the "Photos of Shop" section and before the "Contact" section -->
 <section id="reviews" class="reviews-section">
-  <h2 class="section-title">Customer Reviews</h2>
+  <h2 class="section-title-rv">Customer Reviews on</h2> <img src="GM.png" alt="Customer Reviews" class="reviews-image" />
   <div class="reviews-grid">
     <div class="review-item">
       <div class="review-header">
@@ -486,7 +481,9 @@ document.addEventListener('click', (e) => {
       <p class="review-text">"City Chemist is the largest pharmacy in Dehradun where I can get all my medicine available without any problems additionally, a thoughtful touch is the provision of free of cost drinking water bottles for thirsty customers, making their time in the store more comfortable."</p>
     </div>
   </div>
-  
+  <div class="section-button">
+            <a style="text-decoration:none" href="https://maps.app.goo.gl/U8eF2ad7RJfA4qww9" class="btn btn-secondary">View More on Maps</a>
+          </div>
 </section>
 
         <footer class="footer">
