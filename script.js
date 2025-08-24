@@ -4,14 +4,30 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded");
 
   // ================= FAQ Toggle =================
-  const faqItems = document.getElementsByClassName('faq-item');
-  for (let item of faqItems) {
-    const question = item.querySelector('.faq-question');
-    question.addEventListener('click', function () {
-      item.classList.toggle('active');
-    });
-  }
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const answer = item.querySelector('.faq-answer');
 
+    if (item.classList.contains('active')) {
+      // Closing
+      answer.style.height = answer.scrollHeight + "px"; // set to current height
+      requestAnimationFrame(() => {
+        answer.style.height = "0px"; // animate to 0
+      });
+      item.classList.remove('active');
+    } else {
+      // Opening
+      item.classList.add('active');
+      answer.style.height = answer.scrollHeight + "px"; // animate to content height
+      answer.addEventListener('transitionend', () => {
+        if (item.classList.contains('active')) {
+          answer.style.height = "auto"; // reset to auto after animation
+        }
+      }, { once: true });
+    }
+  });
+});
   // ================= Sidebar =================
   const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.getElementById('sidebar-toggle');
@@ -47,6 +63,7 @@ if (sidebarToggle && sidebar) {
     }
   });
 }
+
 
 
   // ================= Filter Buttons (Gallery View) =================
