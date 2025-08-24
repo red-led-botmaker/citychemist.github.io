@@ -69,7 +69,7 @@ outline: none !important;
   height: 1.5px;
   background-color: #353d40;
   border-radius: 2px;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /* Active state (turn into 1 clean line) */
@@ -84,7 +84,7 @@ outline: none !important;
   
 }
 .sidebar-toggle.active .line:nth-child(2) {
-  transform: scaleX(1.2);
+  transform: scaleX(1);
 }
 
 
@@ -293,17 +293,27 @@ color: #b1392f;
 }
 
 .btn-secondary {
+  border: 0.5px solid #e2e6ee;
   background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
   color: #111;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .btn-secondary:hover {
+  
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #1a8b7d;
+  
   background: linear-gradient(145deg, #e4e9ec, #d8dee2);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .btn-secondary:active {
+  border: 3px solid #1a8b7d;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  
+  
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
 }
@@ -634,9 +644,12 @@ color: #b1392f;
 }
 
 .footer-links:hover {
-  color: #1a8b7d;
+  color: #1aa796;
 }
-
+.footer-links:active {
+  
+  color: #1aa796;
+}
 .footer-link {
   text-decoration: none;
   color: #5c7e8a;
@@ -678,7 +691,7 @@ color: #b1392f;
   background-color: #f7fafc;
 }
 .logocc {
-  margin-left: 140px;
+  margin-left: 152px;
   width: 8%;
   height: auto;
 }
@@ -956,6 +969,18 @@ color: #b1392f;
   border-bottom: 1px solid #e0e0e0;
 }
 
+.faq-item {
+  margin-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-item.active {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 .faq-question {
   font-size: 15px;
   font-weight: 600;
@@ -967,7 +992,7 @@ color: #b1392f;
 }
 
 .faq-question:hover {
-  background-color: #f1f1f1;
+  background-color: #f9f9f9;
 }
 
 .faq-toggle {
@@ -986,14 +1011,21 @@ color: #b1392f;
 .faq-answer {
   font-size: 14px;
   color: #4a4a4a;
-  padding: 0 16px 16px;
-  display: none;
   line-height: 1.6;
+  padding: 0 16px;
+  
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.35s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
+/* Expanded state (JS will handle height value) */
 .faq-item.active .faq-answer {
-  display: block;
+  opacity: 1;
+  padding: 0 16px 16px;
 }
+
 
 /* Ensure existing styles for .section-title, .main-content, etc., apply */
 .button-container {
@@ -1028,9 +1060,13 @@ color: #b1392f;
 }
 
         .contact-button:hover {
-  transform: translateY(-6px);
+  transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border-color: #1a8b7d;
+  
+}
+.contact-button:active {
+transform: translateY(-6px);
   color: #1a8b7d;
 }
 
