@@ -14,33 +14,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ================= Sidebar =================
   const sidebar = document.getElementById('sidebar');
-  const sidebarToggle = document.getElementById('sidebar-toggle');
-  const sidebarItems = document.querySelectorAll('.sidebar-item');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+const sidebarItems = document.querySelectorAll('.sidebar-item');
 
-  if (sidebarToggle && sidebar) {
-    sidebarToggle.addEventListener('click', function (e) {
-      e.stopPropagation();
-      sidebar.classList.toggle('hidden');
-    });
+if (sidebarToggle && sidebar) {
+  sidebarToggle.addEventListener('click', function (e) {
+    e.stopPropagation();
+    sidebar.classList.toggle('hidden');
 
-    sidebarItems.forEach(item => {
-      item.addEventListener('click', function () {
-        const url = item.dataset.link;
-        if (url) {
-          window.location.href = url;
-        }
-        sidebar.classList.add('hidden');
-      });
-    });
+    // 🔹 toggle button style
+    sidebarToggle.classList.toggle('active', !sidebar.classList.contains('hidden'));
+  });
 
-    document.addEventListener('click', function (e) {
-      const clickedInsideSidebar = sidebar.contains(e.target);
-      const clickedToggle = sidebarToggle.contains(e.target);
-      if (!clickedInsideSidebar && !clickedToggle) {
-        sidebar.classList.add('hidden');
+  sidebarItems.forEach(item => {
+    item.addEventListener('click', function () {
+      const url = item.dataset.link;
+      if (url) {
+        window.location.href = url;
       }
+      sidebar.classList.add('hidden');
+      sidebarToggle.classList.remove('active'); // 🔹 reset button style
     });
-  }
+  });
+  
+  document.addEventListener('click', function (e) {
+    const clickedInsideSidebar = sidebar.contains(e.target);
+    const clickedToggle = sidebarToggle.contains(e.target);
+    sidebarToggle.classList.toggle('active', !sidebar.classList.contains('hidden'));
+    if (!clickedInsideSidebar && !clickedToggle) {
+      sidebar.classList.add('hidden');
+      sidebarToggle.classList.remove('active'); // 🔹 reset when closed
+    }
+  });
+}
+
 
   // ================= Filter Buttons (Gallery View) =================
   const filterButtons = document.querySelectorAll('.filter-button');
