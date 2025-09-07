@@ -379,7 +379,7 @@ color: #b1392f;
   
   margin-top: 0;
   height: 0;
-  transition: height 0.01s ease, opacity 0.01s ease, padding-bottom 0.3s ease, margin-top 0.3s ease;
+  transition: height 0.3s ease, opacity 0.3s ease, padding-bottom 0.3s ease, margin-top 0.3s ease;
 }
 
 
