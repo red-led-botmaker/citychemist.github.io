@@ -1527,6 +1527,15 @@ backdrop-filter: blur(2px);
   margin-left: 400px;
   margin-top: -23px;
 }
+.title2 {
+    font-size: 882px;
+    padding-right: 48px;
+  }
+.logocc {
+  margin: 0 auto;
+  width: 2.2%;
+  height: auto;
+}
  .reviews-image {
     width: 12%;
     height: auto;
