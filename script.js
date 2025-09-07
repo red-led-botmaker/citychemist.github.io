@@ -85,92 +85,139 @@ if (sidebarToggle && sidebar) {
   // ================= Weekly Chart =================
  
 
-  // ================= Business Hours Logic =================
-  const weekdayHours = { open: 9, close: 22 };
-  const sundayHours = { open: 9, close: 14 };
-  const holidays = ['03-14'];
-  const now = new Date();
-  const currentHour = now.getHours();
-  const currentMinutes = now.getMinutes();
-  const currentDay = now.getDay();
-  const currentDateString = now.toISOString().slice(5, 10);
+// ================= Business Hours Logic =================
 
-  const todayHours = currentDay === 0 ? sundayHours : weekdayHours;
-  const tomorrowHours = currentDay === 6 ? sundayHours : weekdayHours;
+const weekdayHours = { open: 9, close: 22 };
+const sundayHours = { open: 9, close: 14 }; 
+const holidays = ['03-14'];
+const now = new Date();
+const currentHour = now.getHours();
+const currentMinutes = now.getMinutes();
+const currentDay = now.getDay();
+const currentDateString = now.toISOString().slice(5, 10);
 
-  function formatTime(hour) {
-    const period = hour >= 12 ? 'pm' : 'am';
-    const hour12 = hour % 12 || 12;
-    return `${hour12} ${period}`;
-  }
+const todayHours = currentDay === 0 ? sundayHours : weekdayHours;
+const tomorrowHours = currentDay === 6 ? sundayHours : weekdayHours;
 
-  let statusMessage, timeInfoMessage, statusClass, statusIcon;
+function formatTime(hours, minutes = 0) {
+  let ampm = hours >= 12 ? "pm" : "am";
+  hours = hours % 12 || 12;
+  return `${hours}${minutes ? ":" + String(minutes).padStart(2, "0") : ""}\u00A0${ampm}`;
+}
 
-  const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) ||
-                    (currentHour === todayHours.open && currentMinutes <= 5);
-  const closesSoon = (currentHour < todayHours.close) &&
-                     ((todayHours.close - currentHour === 0 && currentMinutes <= 30) ||
-                      (todayHours.close - currentHour === 1 && currentMinutes >= 30));
-  const isHolidayToday = holidays.includes(currentDateString);
 
-  if (isHolidayToday) {
-    statusMessage = 'Closed today on occasion of Holi';
-    timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
-    statusClass = 'closed';
-    statusIcon = '<div class="static-circle red"></div>';
-  } else if (opensSoon) {
-    statusMessage = 'Opens soon';
-    timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
-    statusClass = 'soon';
-    statusIcon = '<div class="static-circle yellow beeping"></div>';
-  } else if (closesSoon) {
-    statusMessage = 'Closes soon';
-    timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
-    statusClass = 'soon';
-    statusIcon = '<div class="static-circle yellow beeping"></div>';
-  } else if (currentHour >= todayHours.open && currentHour < todayHours.close) {
-    statusMessage = 'Open now';
-    timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
-    statusClass = 'open';
-    statusIcon = '<div class="static-circle green beeping"></div>';
+let statusMessage, timeInfoMessage, statusClass, statusIcon;
+
+const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) ||
+                  (currentHour === todayHours.open && currentMinutes <= 5);
+const closesSoon = (currentHour < todayHours.close) &&
+                   ((todayHours.close - currentHour === 0 && currentMinutes <= 30) ||
+                    (todayHours.close - currentHour === 1 && currentMinutes >= 30));
+const isHolidayToday = holidays.includes(currentDateString);
+
+if (isHolidayToday) {
+  statusMessage = 'Closed today on occasion of Holi';
+  timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
+  statusClass = 'closed';
+  statusIcon = '<div class="static-circle red"></div>';
+} else if (opensSoon) {
+  statusMessage = 'Opens soon';
+  timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
+  statusClass = 'soon';
+  statusIcon = '<div class="static-circle yellow beeping"></div>';
+} else if (closesSoon) {
+  statusMessage = 'Closes soon';
+  timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
+  statusClass = 'soon';
+  statusIcon = '<div class="static-circle yellow beeping"></div>';
+} else if (currentHour >= todayHours.open && currentHour < todayHours.close) {
+  statusMessage = 'Open now';
+  timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
+  statusClass = 'open';
+  statusIcon = '<div class="static-circle green beeping"></div>';
+} else {
+  statusMessage = 'Closed now';
+  if (currentHour < todayHours.open) {
+    timeInfoMessage = `Opens today at ${formatTime(todayHours.open)}.`;
   } else {
-    statusMessage = 'Closed now';
-    timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
-    statusClass = 'closed';
-    statusIcon = '<div class="static-circle red"></div>';
+    timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
   }
+  statusClass = 'closed';
+  statusIcon = '<div class="static-circle red"></div>';
+}
 
-  const statusElement = document.getElementById('status');
-  const timeInfoElement = document.getElementById('time-info');
-  const businessHoursElement = document.getElementById('business-hours');
-  const weeklyHoursElement = document.getElementById('weekly-hours');
-  const weeklyHoursList = document.getElementById('weekly-hours-list');
-  const homeItemElement = document.querySelector('.home-item');
+const statusElement = document.getElementById('status');
+const timeInfoElement = document.getElementById('time-info');
+const businessHoursElement = document.getElementById('business-hours');
+const weeklyHoursElement = document.getElementById('weekly-hours');
+const weeklyHoursList = document.getElementById('weekly-hours-list');
+const toggleIcon = document.getElementById('toggle-hours');
+const homeItemElement = document.querySelector('.home-item');
 
-  if (statusElement && timeInfoElement) {
-    statusElement.innerHTML = `${statusMessage} ${statusIcon}`;
-    timeInfoElement.innerText = timeInfoMessage;
-    statusElement.className = statusClass;
-    timeInfoElement.className = 'time-info';
-  }
+if (statusElement && timeInfoElement) {
+  statusElement.innerHTML = `${statusMessage} ${statusIcon}`;
+  timeInfoElement.innerText = timeInfoMessage;
+  statusElement.className = statusClass;
+  timeInfoElement.className = 'time-info';
+}
 
-  if (weeklyHoursList) {
-    weeklyHoursList.innerHTML = `
-      <li>Mon - Sat: ${formatTime(weekdayHours.open)} - ${formatTime(weekdayHours.close)}</li>
-      <li>Sunday: ${formatTime(sundayHours.open)} - ${formatTime(sundayHours.close)}</li>
-    `;
-  }
+if (weeklyHoursList) {
+  weeklyHoursList.innerHTML = `
+    <li>Mon - Sat : 9 am - 10 pm</li>
+    <li>Sunday :  9 am -  2 pm</li>
+  `;
+}
 
-  if (businessHoursElement && weeklyHoursElement) {
-    businessHoursElement.addEventListener('click', () => {
-      weeklyHoursElement.style.display = weeklyHoursElement.style.display === 'block' ? 'none' : 'block';
-    });
-  }
+if (businessHoursElement && weeklyHoursElement) {
+  businessHoursElement.addEventListener('click', () => {
+    const answer = weeklyHoursElement;
 
-  if (homeItemElement) {
-    homeItemElement.style.borderColor = statusClass === 'open' ? '#1db280' :
-                                        statusClass === 'soon' ? '#ffa500' : '#ff0000';
-  }
+    if (answer.classList.contains('show')) {
+      // Closing
+      answer.style.height = answer.scrollHeight + "px"; // set current height
+      requestAnimationFrame(() => {
+        answer.style.height = "0px";        // animate to 0
+        answer.style.opacity = "0";
+        answer.style.paddingBottom = "0px";
+        answer.style.marginTop = "0px";
+      });
+      answer.addEventListener('transitionend', () => {
+        answer.classList.remove('show');
+        answer.style.height = "";
+      }, { once: true });
+
+    } else {
+      // Opening
+      answer.classList.add('show');
+      answer.style.height = "0px";
+      answer.style.opacity = "0";
+      answer.style.paddingBottom = "0px";
+      answer.style.marginTop = "0px";
+
+      requestAnimationFrame(() => {
+        answer.style.height = answer.scrollHeight + "px";
+        answer.style.opacity = "1";
+        answer.style.paddingBottom = "16px";
+        answer.style.marginTop = "12px";
+      });
+
+      answer.addEventListener('transitionend', () => {
+        if (answer.classList.contains('show')) {
+          answer.style.height = "auto"; // reset to auto
+        }
+      }, { once: true });
+    }
+
+    businessHoursElement.classList.toggle('active');
+    if (toggleIcon) toggleIcon.classList.toggle('rotated');
+  });
+}
+
+
+if (homeItemElement) {
+  homeItemElement.style.borderColor = statusClass === 'open' ? '#1db280' :
+                                      statusClass === 'soon' ? '#ffa500' : '#ff0000';
+}
 
   // ================= FULLSCREEN GALLERY =================
   const galleryImages = document.querySelectorAll('.gallery-image');
