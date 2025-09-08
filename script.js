@@ -138,7 +138,7 @@ if (isHolidayToday) {
 } else {
   statusMessage = 'Closed now';
   if (currentHour < todayHours.open) {
-    timeInfoMessage = `Opens today at ${formatTime(todayHours.open)}.`;
+    timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
   } else {
     timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
   }
