@@ -60,16 +60,15 @@ outline: none !important;
   background: none;
   border: none;
   cursor: pointer;
-  
-  gap: 6px; /* spacing between lines */
+  gap: 5px; /* spacing between lines */
 }
 
 .sidebar-toggle .line {
-  width: 24px;
+  width: 25px;
   height: 1.5px;
-  background-color: #353d40;
+  background-color: black;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.45s ease;
 }
 
 /* Active state (turn into 1 clean line) */
@@ -1180,15 +1179,16 @@ color: #b1392f;
   border: 1px solid #e5e7eb;
 }
 
-        .contact-button:hover {
+.contact-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border-color: #1a8b7d;
-  
+  color: #1a8b7d;
 }
 .contact-button:active {
 transform: translateY(-6px);
-  color: #1a8b7d;
+color: #1a8b7d;
+border-color: #1a8b7d;
 }
 
         .contact-button i {
