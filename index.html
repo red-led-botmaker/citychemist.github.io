@@ -208,9 +208,9 @@
             <h1 class="hero-title">Trusted Pharmacy in Dehradun For Over 10 Years</h1>
             <h2 class="hero-subtitle">Serving 35,000+ medicines, surgical wears & health essentials under one roof.</h2>
             <div class="hero-buttons">
-              <button class="btn btn-secondary"><a style="color: #101618; text-decoration:none" href="tel:+919719156959"><i class="fa-light fa-phone"></i>‎‎ Call Now</a></button>
-              <button class="btn btn-secondary"><a style="color: #101618; text-decoration:none" href="https://wa.me/+919719156959"><i class="fa-brands fa-whatsapp"></i>‎ ‎‎WhatsApp</a></button>
-              <button class="btn btn-secondary"> <a style="color: #101618; text-decoration:none" href="https://maps.app.goo.gl/U8eF2ad7RJfA4qww9"><i class="fas fa-map-marker-alt"> ‎</i>Location</a> </button>
+              <button class="btn btn-secondary1"><a style="color: #101618; text-decoration:none" href="tel:+919719156959"><i class="fa-light fa-phone"></i>‎‎ Call Now</a></button>
+              <button class="btn btn-secondary1"><a style="color: #101618; text-decoration:none" href="https://wa.me/+919719156959"><i class="fa-brands fa-whatsapp"></i>‎ ‎‎WhatsApp</a></button>
+              <button class="btn btn-secondary1"> <a style="color: #101618; text-decoration:none" href="https://maps.app.goo.gl/U8eF2ad7RJfA4qww9"><i class="fas fa-map-marker-alt"> ‎</i>Location</a> </button>
             </div>
           </div>
         </div>
@@ -279,13 +279,13 @@
 <script>
 // ---------- CONFIG ----------
 const dataByDay = {
-  "Mondays":    [7.5,15,22,28,26,27,28,32,47,53,56,63,39,0],
-  "Tuesdays":   [7.5,13,20,25,24,26,27,30,43,50,53,57,34,0],
-  "Wednesdays": [6.2,12,19,24,22,23,25,28,40,48,50,55,31,0],
-  "Thursdays":  [6.3,13,20,24,23,24,26,29,42,51,52,56,32,0],
-  "Fridays":    [6.9,14,20,25,24,25,26,28,43,50,53,60,33,0],
-  "Saturdays":  [7.5,14.3,21,27,25,26,29,33,46,52,55,61,36,0],
-  "Sundays":    [7.3,13,17,28,32,0,0,0,0,0,0,0,0,0]
+  "Mondays":    [13.5,17,37,32,30,34,33,42,57,63,73,66,39,0],
+  "Tuesdays":   [10.5,14,33,27,26,32,27,30,53,55,63,57,34,0],
+  "Wednesdays": [10.2,12,30,24,22,26,25,28,44,52,59,55,31,0],
+  "Thursdays":  [10.3,13,28,22,23,24,26,29,42,51,57,53,32,0],
+  "Fridays":    [10.9,14,34,24,25,27,29,36,46,54,63,54,33,0],
+  "Saturdays":  [12.5,16,35,27,27,29,33,39,50,66,71,56,36,0],
+  "Sundays":    [13.3,19,36,39,32,0,0,0,0,0,0,0,0,0]
 };
 const baseHour = 9;
 const days = ["Sundays","Mondays","Tuesdays","Wednesdays","Thursdays","Fridays","Saturdays"];
@@ -333,7 +333,7 @@ function showBarInfo(bar, hour, value, precise=false){
 
   // ✅ Add dot back
   barInfo.innerHTML = `
-      <div><strong>${timeText}</strong></div>
+      <div class ="xt"><strong>${timeText}</strong></div>
       <div class="status">
           <span class="dot ${status.cls}"></span>
           ${status.text}
