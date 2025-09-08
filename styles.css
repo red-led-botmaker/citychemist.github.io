@@ -257,6 +257,8 @@ outline: none !important;
 }
 
 .btn {
+  text-decoration: none;
+  color: #101618;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -300,12 +302,40 @@ color: #b1392f;
 }
 
 .btn-secondary {
+  color: #101618;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
+  color: #111;
+  
+}
+.btn-secondary:hover {
+  
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #1a8b7d;
+  color: #1a8b7d;
+  background: linear-gradient(145deg, #e4e9ec, #d8dee2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.btn-secondary:active {
+  color: #1a8b7d;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  
+  
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
+}
+.btn-secondary1 {
+  
+  color: #101618;
   border: 2px solid #e2e6ee;
   background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
   color: #111;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-.btn-secondary:hover {
+.btn-secondary1:hover {
   
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border: 2px solid #1a8b7d;
@@ -315,7 +345,7 @@ color: #b1392f;
   box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-.btn-secondary:active {
+.btn-secondary1:active {
   
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -324,6 +354,7 @@ color: #b1392f;
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
 }
+
 
 /* Home Section Styles */
 .home-section {
@@ -480,7 +511,24 @@ color: #b1392f;
   justify-content: flex-start;
   padding: 12px 0;
 }
-
+.about-imageo {
+  width: 100%;
+  aspect-ratio: 8/10;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+.about-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  margin: 12px 0;
+}
 /* Services Section Styles */
 .services-section {
   padding: 16px;
@@ -621,9 +669,9 @@ color: #b1392f;
 }
 .divider {
   border: none;
-  border-top: 1px solid #BEBEBE;
+  border-top: 3px solid #BEBEBE;
   margin: 32px auto;
-  width: 80%; /* adjust length */
+  width: 100%; /* adjust length */
 }
 
 
@@ -1011,7 +1059,7 @@ color: #b1392f;
 .faqs-section {
   padding: 16px;
   min-width: 330px;
-  max-width: 330px;
+  max-width: 340px;
   margin: 40px auto 0;
   background-color: #ffffff;
   border-radius: 12px;
@@ -1021,7 +1069,7 @@ color: #b1392f;
   margin: 40px auto 0;
   padding: 26px;
   min-width: 330px;
-  max-width: 330px;
+  max-width: auto;
   margin-top: 100px;
   background-color: #ffffff;
   border-radius: 12px;
@@ -1395,6 +1443,7 @@ backdrop-filter: blur(2px);
 
 
 #graph {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1418,6 +1467,7 @@ backdrop-filter: blur(2px);
 .chart {
   margin-left: 29px;
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   gap: 8px;
   height: 160px;
@@ -1464,7 +1514,9 @@ backdrop-filter: blur(2px);
   z-index: 10;
   
 }
-
+.xt {
+  font-size: 11.5px;
+}
 
 
 .bar-info.show {
@@ -1473,9 +1525,8 @@ backdrop-filter: blur(2px);
 
 .labels {
   margin-top: -20px;
-  margin-left: 20px;
   display: flex;
-  justify-content: flex-start; /* start items from left */
+  justify-content: center; /* start items from left */
   gap: 43px; /* fixed spacing between items */
   width: 100%;
   max-width: 410px;
@@ -1526,6 +1577,10 @@ backdrop-filter: blur(2px);
 .rating-strip {
   margin-left: 400px;
   margin-top: -23px;
+}
+.faqs-section {
+  min-width: 600px;
+  max-width: auto;
 }
 .title2 {
     font-size: 882px;
