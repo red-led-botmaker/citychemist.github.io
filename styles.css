@@ -309,7 +309,6 @@ color: #b1392f;
   
 }
 .btn-secondary:hover {
-  
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border: 1px solid #1a8b7d;
   color: #1a8b7d;
@@ -319,16 +318,14 @@ color: #b1392f;
 }
 
 .btn-secondary:active {
+  border: 1px solid #1a8b7d;
   color: #1a8b7d;
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  
-  
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
 }
 .btn-secondary1 {
-  
   color: #101618;
   border: 2px solid #e2e6ee;
   background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
@@ -336,21 +333,17 @@ color: #b1392f;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 .btn-secondary1:hover {
-  
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   border: 2px solid #1a8b7d;
-  
   background: linear-gradient(145deg, #e4e9ec, #d8dee2);
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
 .btn-secondary1:active {
-  
+  border: 2px solid #1a8b7d;
   transform: translateY(-6px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  
-  
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
 }
