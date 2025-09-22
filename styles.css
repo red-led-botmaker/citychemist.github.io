@@ -1690,9 +1690,11 @@ backdrop-filter: blur(2px);
  margin-bottom: 150px;
 }
 .faqs-section {
-  min-width: 600px;
+  margin-left: 0px;
+  min-width: 1200px;
   max-width: auto;
 }
+
 .title2 {
     font-size: 882px;
     padding-right: 48px;
