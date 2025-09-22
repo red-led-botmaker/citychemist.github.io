@@ -789,9 +789,9 @@ color: #b1392f;
   font-weight: 400;
   line-height: 1.5;
 }
-.footer-spacer {
+.spacer {
   height: 20px;
-  background-color: #f7fafc;
+  background: transparent;
 }
 .logocc {
   margin: 0 auto;
@@ -967,9 +967,9 @@ color: #b1392f;
 
 
 .review-text {
-  letter-spacing: 1.2px;
-  font-size: 14px;
-  font-weight: 300;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 12px;
   color: #4a4a4a;
   line-height: 1.5;
 }
@@ -1637,6 +1637,21 @@ backdrop-filter: blur(2px);
 .rating-strip {
   margin-left: 400px;
   margin-top: -23px;
+}
+.update-detail-section3 {
+  
+  max-width: 50%;
+}
+.update-image {
+  width: 40%;
+  
+  aspect-ratio: 15/10;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+  border: #bbd4cc 1px solid;
+  margin: 12px 0;
 }
 .about-imageo {
   width: 20%;
