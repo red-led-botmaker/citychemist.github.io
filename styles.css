@@ -1863,7 +1863,7 @@ backdrop-filter: blur(2px);
   min-width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3fd0b5, #3fbdd0); /* original mint + sky */
+  background: linear-gradient(135deg, #1b9b83, #2591a1); /* original mint + sky */
   position: relative;
   display: grid;
   place-items: center;
@@ -1900,4 +1900,16 @@ backdrop-filter: blur(2px);
       .ahero-title{font-size:22px}
       .ahero-sub{font-size:14px}
       .two-col{grid-template-columns:1fr}
+    }
+    .fa-badge-percent {
+      color: rgb(27, 162, 27);
+    }
+    .fa-box-circle-check{
+      color: #847f14;
+    }
+    .fa-box-open-full{
+      color: #bb8351;
+    }
+    .fa-universal-access{
+      color: #1e8915;
     }
