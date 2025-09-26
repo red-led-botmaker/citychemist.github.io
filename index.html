@@ -271,7 +271,7 @@
     <span>9pm</span>
   </div>
 
-  <div class="inac">Popular times are prone to inaccuracy.</div>
+  <div class="inac">These popular times reflect trends from the last 30 days.</div>
 </section>
 
 <script>
@@ -316,19 +316,35 @@ function formatHourRange(h24){
   const period = h24 >= 12 ? "PM" : "AM";
   return `${start}-${end} ${period}`;
 }
-function statusByValue(v){
-  if(v <= 0) return {text:"Closed", cls:"closed"};
-  if(v < 20) return {text:"Usually not busy", cls:"low"};
-  if(v < 35) return {text:"Usually not too busy", cls:"medium"};
-  if(v < 50) return {text:"Usually busy", cls:"busy"};
-  return {text:"Usually very busy", cls:"very-busy"};
+function statusByValue(v, h24) {
+  if (v <= 0) return { text: "Closed", cls: "closed" };
+  if (v < 20) return { text: "Usually not busy", cls: "low" };
+
+  if (v < 35) {
+    // Special case: the hour slot is 21 (9 PM)
+    if (h24 === 21) {
+      return { text: "Usually not too <br> busy", cls: "medium" };
+    }
+    return { text: "Usually not too busy", cls: "medium" };
+  }
+
+  if (v < 50) return { text: "Usually busy", cls: "busy" };
+  return { text: "Usually very busy", cls: "very-busy" };
+}
+
+function isTextOverflowing(el) {
+  return el.scrollWidth > el.clientWidth;
 }
 
 // ---------- SHOW INFO ----------
 function showBarInfo(bar, hour, value, precise=false){
-  const status = statusByValue(value);
+  const status = statusByValue(value, hour);
   const timeText = precise ? formatHour(hour, true) : formatHourRange(hour);
-
+  if(isTextOverflowing(barInfo)) {
+    barInfo.classList.add("small");
+  } else {
+    barInfo.classList.remove("small");
+  }
   // ✅ Add dot back
   barInfo.innerHTML = `
       <div class ="xt"><strong>${timeText}</strong></div>
@@ -484,50 +500,77 @@ setInterval(()=>showCurrentHourInfo(), 60*1000);
     <a style="text-decoration:none" href="updates.html" class="btn btn-secondary"> View Full Update</a>
       </section>
 
-        <section id="about" class="about-section">
-          <h2 class="section-title">About Us</h2>
-          <p class="section-text">
-            City Chemist is Dehradun’s largest, premium pharmacy offering branded medicines, cosmetics, and health essentials.</p>
-<p class="section-text"> Located at C-17, Nehru Colony, we provide a mall-like shopping experience with friendly staff and organized shelves.</p>
-<p class="section-text"> Enjoy free parking and GST billing for a smooth, convenient visit.</p>
+            <section class="ahero">
+      <div class="ahero-card1">
+        
+        <h2 class="ahero-title">About Us</h2>
+        <p class="section-text">City Chemist is Dehradun’s largest, premium pharmacy offering branded medicines, cosmetics, and health essentials.</p>
+        <p class="section-text">Located at C-17, Nehru Colony, we provide a mall-like shopping experience with friendly staff and organized shelves.</p>
+        <p class="section-text">Enjoy free parking and GST billing for a smooth, convenient visit.</p>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
 
           <div class="section-button">
-            <a style="text-decoration:none" href="about.html" class="btn btn-secondary">Learn More</a>
+            <a style="text-decoration:none" href="about.html" class="btn btn-secondary"><i class="fa-solid fa-info-circle"></i>‎ ‎ Learn More</a>
           </div>
-        </section>
+
+        
+      </div>
+      </div>
+      
+    </section>
 
 
         <section id="services" class="services-section">
           <h2 class="section-title">Our Services</h2>
           <div class="services-grid">
-            <div class="service-item">
-              <img src="ipm.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
+            <div class="service-image1">
+              <div class="service-text4"><i class="fa-solid fa-file-prescription"></i></div>
               <p class="service-text">Prescription Medicines</p>
+              
             </div>
-            <div class="service-item">
-              <img src="iov.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
+            <div class="service-image2">
+              <div class="service-text3"><div class="color11"><i class="fa-solid fa-pills"></i></div></div>
               <p class="service-text">Over-the-Counter Medicines</p>
             </div>
-            <div class="service-item">
-              <img src="ib.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
-              <p class="service-text">Baby Care</p>
+            <div class="service-image3">
+              <div class="service-text3"><i class="fa-light fa-bottle-baby"></i></div>
+              <p class="service-text">Baby Care Products</p>
             </div>
-            <div class="service-item">
-              <img src="ihp.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
+            <div class="service-image4">
+              <div class="service-text3"><i class="fa-solid fa-prescription-bottle"></i></div>
               <p class="service-text">Health Supplements</p>
             </div>
-            <div class="service-item">
-              <img src="isur.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
-              <p class="service-text">Surgical Supplies</p>
+            <div class="service-image5">
+              <div class="service-text3"><i class="fa-solid fa-wheelchair"></i></div>
+              <p class="service-textl">Orthotics</p>
             </div>
-             <div class="service-item">
-              <img src="iw.jpg" alt="Interior of City Chemist" loading="lazy" class="photo-image">
+            <div class="service-image6">
+              <div class="service-text3"><i class="fa-solid fa-glass-water-droplet"></i></div>
               <p class="service-text">Free RO Water Service</p>
             </div>
           </div>
           
         </section>
+  <section id="contact" class="contact-sectiont">
+          <h2 class="section-title">Support & Contact</h2>
+        </section>
 
+        
+        <section id="contact" class="contact-section">
+              <div class="contact-info">
+            <div class="contact-item">
+              <p class="contact-label">Phone</p>
+              <p class="contact-value">+91 9719156959  ‎ ‎ |‎ ‎  +91 9760181920</p>
+            </div>
+             
+            <div class="contact-item">
+<p class="contact-label">Email</p>
+<p class="contact-value">citychemist31@gmail.com</p>
+</div>
+<div class="section-button">
+            <a style="text-decoration:none" href="contact.html" class="btn btn-secondary">View More</a>
+          </div>
+                              </section>
 
         <section id="photos" class="photos-section">
           <h2 class="section-title">Inside The Place</h2>
@@ -555,26 +598,7 @@ setInterval(()=>showCurrentHourInfo(), 60*1000);
         </section>
 
 
-        <section id="contact" class="contact-sectiont">
-          <h2 class="section-title">Support & Contact</h2>
-        </section>
-
-        
-        <section id="contact" class="contact-section">
-              <div class="contact-info">
-            <div class="contact-item">
-              <p class="contact-label">Phone</p>
-              <p class="contact-value">+91 9719156959  ‎ ‎ |‎ ‎  +91 9760181920</p>
-            </div>
-             
-            <div class="contact-item">
-<p class="contact-label">Email</p>
-<p class="contact-value">citychemist31@gmail.com</p>
-</div>
-<div class="section-button">
-            <a style="text-decoration:none" href="contact.html" class="btn btn-secondary">View More</a>
-          </div>
-                              </section>
+      
 
 
 <!-- Add this section after the "Photos of Shop" section and before the "Contact" section -->
@@ -584,25 +608,6 @@ setInterval(()=>showCurrentHourInfo(), 60*1000);
 
 
   <div class="reviews-grid">
-    <div class="review-item">
-      <div class="review-header">
-        <img src="rp11.png" alt="Devendra Singh" class="profile-pic" />
-        <div class="review-info">
-          <div class="review-name">Devendra Singh <i class="fa-solid fa-badge-check"></i></div>
-          
-        </div>
-
-      </div>
-<div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    
-                </div>
-      <p class="review-text">"One of the famous chemists shops in Dehradun city. Known for quality medicines, cosmetics and surgical instruments with good discounts up to 15-20%."</p>
-    </div>
     <div class="review-item">
       <div class="review-header">
         <img src="rp12.png" alt="pfp" class="profile-pic" />
@@ -621,6 +626,26 @@ setInterval(()=>showCurrentHourInfo(), 60*1000);
                 </div>
       <p class="review-text">"A Good Place with discounted price on medicines, You will get maximum medicine prescribed by the near by vicinity doctors, they also take care of their customers, they offered Packed Water for Drinking and also have the facility of washroom too."</p>
     </div>
+    <div class="review-item">
+      <div class="review-header">
+        <img src="rp11.png" alt="Devendra Singh" class="profile-pic" />
+        <div class="review-info">
+          <div class="review-name">Shweta <i class="fa-solid fa-badge-check"></i></div>
+          
+        </div>
+
+      </div>
+
+<div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                </div>
+      <p class="review-text">"Neat and clean and well organized shop. The staff is polite and helpful."</p>
+    </div>
+    
     <div class="review-item">
       <div class="review-header">
         <img src="rp13.png" alt="pfp" class="profile-pic" />
