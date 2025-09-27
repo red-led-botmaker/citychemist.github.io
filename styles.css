@@ -593,7 +593,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("ipm.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ipm.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -613,7 +613,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("iov.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("iov.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -633,7 +633,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("ib.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ib.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -653,7 +653,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("ihp.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ihp.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -673,7 +673,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("isur.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("isur.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -693,7 +693,7 @@ color: #b1392f;
   min-width: 180px;
 
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.65) 0%, rgba(0.2, 0.2, 0.3, 0.76) 100%), url("iw.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("iw.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -775,39 +775,27 @@ color: #b1392f;
   transition: transform 0.35s ease;
 }
 
-.service-image1:hover .service-text4 {
-  transform: scale(1.07);
-}
+
 .service-image1:hover .service-text {
   transform: scale(1.04);
 }
-.service-image2:hover .service-text3 {
-  transform: scale(1.07);
-}
+
 .service-image2:hover .service-text {
   transform: scale(1.04);
 }
-.service-image3:hover .service-text3 {
-  transform: scale(1.07);
-}
+
 .service-image3:hover .service-text {
   transform: scale(1.04);
 }
-.service-image4:hover .service-text3 {
-  transform: scale(1.07);
-}
+
 .service-image4:hover .service-text {
   transform: scale(1.04);
 }
-.service-image5:hover .service-text3 {
-  transform: scale(1.07);
-}
+
 .service-image5:hover .service-textl {
   transform: scale(1.04);
 }
-.service-image6:hover .service-text3 {
-  transform: scale(1.07);
-}
+
 .service-image6:hover .service-text {
   transform: scale(1.04);
 }
