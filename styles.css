@@ -2084,8 +2084,8 @@ backdrop-filter: blur(2px);
   font-size: 13px;
   overflow: hidden; /* ensures overlay stays inside circle */
 }
-.ahero-card1{background:transparent;border-radius:18px;padding:26px;position:relative;overflow:hidden;width: 100%; margin-top: 50px;}
-    .ahero-card1::after{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(var(--mint),transparent);opacity:.3;animation:pulse 6s infinite alternate}
+.ahero-card1{background:transparent;border-radius:18px;padding:26px;position:relative;overflow:hidden;width: 100%; margin-top: 30px;}
+    
 
 .bullet::after {
   content: "";
