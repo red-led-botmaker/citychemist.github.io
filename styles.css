@@ -1281,7 +1281,7 @@ color: #b1392f;
   margin-top: 20px;
 }
 .gradient-icon {
-  background: linear-gradient(135deg, #008080, #5eebae, #06a1e3);
+  background: linear-gradient(135deg, #2feded, #5eebae, #29b0e2);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
