@@ -287,7 +287,9 @@ const dataByDay = {
 };
 const baseHour = 9;
 const days = ["Sundays","Mondays","Tuesdays","Wednesdays","Thursdays","Fridays","Saturdays"];
-
+const diwaliDate = "10-21";   // MM-DD for Diwali
+const holiDate = "03-04";     // MM-DD for Holi
+const diwaliHours = { open: 9, close: 18 };
 // ---------- DOM ----------
 const chartEl = document.querySelector(".chart");
 const bars = chartEl.querySelectorAll(".bar");
@@ -335,9 +337,34 @@ function statusByValue(v, h24) {
 function isTextOverflowing(el) {
   return el.scrollWidth > el.clientWidth;
 }
-
+function isDiwali() {
+  const now = new Date();
+  const current = now.toISOString().slice(5,10);
+  return current === diwaliDate;
+}
+function isHoli() {
+  const now = new Date();
+  const current = now.toISOString().slice(5,10);
+  return current === holiDate;
+}
+function isDiwaliOpen() {
+  const now = new Date();
+  return isDiwali() && now.getHours() >= diwaliHours.open && now.getHours() < diwaliHours.close;
+}
 // ---------- SHOW INFO ----------
 function showBarInfo(bar, hour, value, precise=false){
+   if(isHoli()) {
+    barInfo.style.opacity = 0;
+    lineIndicator.style.display = "none";
+    return;
+  }
+
+  // Diwali after closing hour: hide info
+  if(isDiwali() && hour >= diwaliHours.close) {
+    barInfo.style.opacity = 0;
+    lineIndicator.style.display = "none";
+    return;
+  }
   const status = statusByValue(value, hour);
   const timeText = precise ? formatHour(hour, true) : formatHourRange(hour);
   if(isTextOverflowing(barInfo)) {
@@ -415,6 +442,18 @@ function showCurrentHourInfo(day){
   const currentHour = now.getHours();
   const todayIndex = now.getDay();
   const todayName = days[todayIndex];
+  if(isHoli()) {
+    barInfo.style.opacity = 0;
+    lineIndicator.style.display = "none";
+    return;
+  }
+
+  // Diwali: hide info after 6 PM
+  if(isDiwali() && currentHour >= diwaliHours.close) {
+    barInfo.style.opacity = 0;
+    lineIndicator.style.display = "none";
+    return;
+  }
 
   if(day !== todayName) return; // only for today
 
@@ -486,23 +525,32 @@ document.addEventListener("click",(e)=>{
 updateChart(todayName);
 setInterval(()=>showCurrentHourInfo(), 60*1000);
 </script>
-<section class="update-detail-section3">
-    <h2 class="update-section-title">Pinned Update ‎ ‎<i class="fa-solid fa-map-pin"></i></h2>
-    
+<section class="pinned-update">
+ <div class="announcement-badge">
+      <i class="fa-solid fa-map-pin"></i>
+      <span>Pinned Update</span>
+    </div>
 
-    <h3 class="section-subtitle">Update on GST Changes <i class="fa-solid fa-sparkles gradient-icon"></i> 
-</h3>
-    <img src="GST.png" alt="GST Rate Cuts in Medicines" class="update-image" loading="lazy">
-    <p class="update-date">22nd September, 2025</p>
-   
-    
+  <h3 class="section-subtitle">
+    Update on GST Changes 
+    <i class="fa-solid fa-sparkles gradient-icon"></i>
+  </h3>
 
-    <a style="text-decoration:none" href="updates.html" class="btn btn-secondary"> View Full Update</a>
-      </section>
+  <div class="pinned-image-wrapper">
+    <img src="GST.png" alt="GST Rate Cuts in Medicines" class="pinned-image" loading="lazy">
+  </div>
 
-            <section class="ahero">
+  <p class="update-date">22nd September, 2025</p>
+
+  <a href="updates.html" class="pinned-btn">View Full Update</a>
+ 
+</section>
+
+
+           
               
       <div class="ahero-card1">
+         
         <img src="Pharmacybg.jpg" alt="About Us" class="ahero-image" loading="lazy">
         <h2 class="ahero-title">‎ ‎</h2>
         <h2 class="ahero-title">About Us</h2>
@@ -519,7 +567,7 @@ setInterval(()=>showCurrentHourInfo(), 60*1000);
       </div>
       </div>
       
-    </section>
+    
 
 
         <section id="services" class="services-section">
