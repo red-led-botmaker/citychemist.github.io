@@ -87,54 +87,126 @@ if (sidebarToggle && sidebar) {
 
 // ================= Business Hours Logic =================
 
+// =============================
+// 📅 Business Hours Configuration
+// =============================
 const weekdayHours = { open: 9, close: 22 };
-const sundayHours = { open: 9, close: 14 }; 
-const holidays = ['03-14'];
+const sundayHours = { open: 9, close: 14 };
+
+// 🪔 Special Diwali timing (Set MM-DD correctly)
+const diwaliDate = '10-21'; //Diwali 
+const diwaliHours = { open: 9, close: 18 };
+
+// 📅 Fixed Holidays (MM-DD)
+const holidays = ['03-04']; //Holi
+
+// =============================
+// 🕒 Date & Time Setup
+// =============================
 const now = new Date();
 const currentHour = now.getHours();
 const currentMinutes = now.getMinutes();
 const currentDay = now.getDay();
 const currentDateString = now.toISOString().slice(5, 10);
 
-const todayHours = currentDay === 0 ? sundayHours : weekdayHours;
-const tomorrowHours = currentDay === 6 ? sundayHours : weekdayHours;
+// Tomorrow's date (for next opening info)
+const tomorrow = new Date(now);
+tomorrow.setDate(now.getDate() + 1);
+const tomorrowDateString = tomorrow.toISOString().slice(5, 10);
 
+// =============================
+// 🕘 Determine Today's & Tomorrow's Hours
+// Priority: Diwali > Sunday > Weekday
+// =============================
+let todayHours;
+if (currentDateString === diwaliDate) {
+  todayHours = diwaliHours;
+} else if (currentDay === 0) {
+  todayHours = sundayHours;
+} else {
+  todayHours = weekdayHours;
+}
+
+let tomorrowHours;
+if (tomorrowDateString === diwaliDate) {
+  tomorrowHours = diwaliHours;
+} else if (currentDay === 6) {
+  tomorrowHours = sundayHours;
+} else {
+  tomorrowHours = weekdayHours;
+}
+
+// =============================
+// 🧠 Helper Functions
+// =============================
 function formatTime(hours, minutes = 0) {
   let ampm = hours >= 12 ? "pm" : "am";
   hours = hours % 12 || 12;
   return `${hours}${minutes ? ":" + String(minutes).padStart(2, "0") : ""}\u00A0${ampm}`;
 }
 
-
-let statusMessage, timeInfoMessage, statusClass, statusIcon;
+// =============================
+// 🪔 Status Logic
+// =============================
+const isHolidayToday = holidays.includes(currentDateString);
+const isDiwaliToday = currentDateString === diwaliDate;
 
 const opensSoon = (currentHour === todayHours.open - 1 && currentMinutes >= 40) ||
                   (currentHour === todayHours.open && currentMinutes <= 5);
+
 const closesSoon = (currentHour < todayHours.close) &&
                    ((todayHours.close - currentHour === 0 && currentMinutes <= 30) ||
                     (todayHours.close - currentHour === 1 && currentMinutes >= 30));
-const isHolidayToday = holidays.includes(currentDateString);
+
+let statusMessage, timeInfoMessage, statusClass, statusIcon, festiveNote;
 
 if (isHolidayToday) {
   statusMessage = 'Closed today on occasion of Holi';
   timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
   statusClass = 'closed';
   statusIcon = '<div class="static-circle red"></div>';
+  festiveNote = '';
+
+} else if (isDiwaliToday) {
+  if (currentHour >= todayHours.open && currentHour < todayHours.close) {
+    statusMessage = 'Open now';
+    timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
+    statusClass = 'open';
+    statusIcon = '<div class="static-circle green beeping"></div>';
+  } else if (opensSoon) {
+    statusMessage = 'Opens soon';
+    timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
+    statusClass = 'soon';
+    statusIcon = '<div class="static-circle yellow beeping"></div>';
+  } else {
+    statusMessage = 'Closed now';
+    timeInfoMessage = `Opens tomorrow at ${formatTime(tomorrowHours.open)}.`;
+    statusClass = 'closed';
+    statusIcon = '<div class="static-circle red"></div>';
+  }
+  festiveNote = '🪔 Diwali Timings : 9 am – 6 pm';
+
 } else if (opensSoon) {
   statusMessage = 'Opens soon';
   timeInfoMessage = `Opens at ${formatTime(todayHours.open)}.`;
   statusClass = 'soon';
   statusIcon = '<div class="static-circle yellow beeping"></div>';
+  festiveNote = '';
+
 } else if (closesSoon) {
   statusMessage = 'Closes soon';
   timeInfoMessage = `Closes at ${formatTime(todayHours.close)}.`;
   statusClass = 'soon';
   statusIcon = '<div class="static-circle yellow beeping"></div>';
+  festiveNote = '';
+
 } else if (currentHour >= todayHours.open && currentHour < todayHours.close) {
   statusMessage = 'Open now';
   timeInfoMessage = `Open until ${formatTime(todayHours.close)}.`;
   statusClass = 'open';
   statusIcon = '<div class="static-circle green beeping"></div>';
+  festiveNote = '';
+
 } else {
   statusMessage = 'Closed now';
   if (currentHour < todayHours.open) {
@@ -144,8 +216,12 @@ if (isHolidayToday) {
   }
   statusClass = 'closed';
   statusIcon = '<div class="static-circle red"></div>';
+  festiveNote = '';
 }
 
+// =============================
+// 🧱 DOM Elements & Updates
+// =============================
 const statusElement = document.getElementById('status');
 const timeInfoElement = document.getElementById('time-info');
 const businessHoursElement = document.getElementById('business-hours');
@@ -154,19 +230,81 @@ const weeklyHoursList = document.getElementById('weekly-hours-list');
 const toggleIcon = document.getElementById('toggle-hours');
 const homeItemElement = document.querySelector('.home-item');
 
+// Add festive note element dynamically
+// 🪔 Create or select the festive note element ABOVE status
+let festiveNoteElement = document.getElementById('festive-note');
+if (!festiveNoteElement) {
+  festiveNoteElement = document.createElement('div');
+  festiveNoteElement.id = 'festive-note';
+
+  // 🎨 Styling for festive note
+  festiveNoteElement.style.display = 'none';
+  festiveNoteElement.style.marginBottom = '20px';
+  festiveNoteElement.style.padding = '6px 12px';
+  festiveNoteElement.style.borderRadius = '8px';
+  festiveNoteElement.style.fontSize = '0.8rem';
+  festiveNoteElement.style.fontWeight = '600';
+  festiveNoteElement.style.textAlign = 'center';
+  festiveNoteElement.style.background = 'linear-gradient(90deg, #ffda8a, #ffd35c, #ffda8a)';
+  festiveNoteElement.style.color = '#7a4e00';
+  festiveNoteElement.style.boxShadow = '0 0 10px rgba(255, 215, 100, 0.5)';
+  festiveNoteElement.style.animation = 'festiveGlow 2.5s ease-in-out infinite';
+  festiveNoteElement.style.maxWidth = '90%';
+  festiveNoteElement.style.marginLeft = 'auto';
+  festiveNoteElement.style.marginRight = 'auto';
+
+  statusElement?.parentNode?.insertBefore(festiveNoteElement, statusElement);
+}
+
+// Inject CSS for glowing animation if not already added
+if (!document.getElementById('festive-note-style')) {
+  const styleTag = document.createElement('style');
+  styleTag.id = 'festive-note-style';
+  styleTag.innerHTML = `
+    @keyframes festiveGlow {
+      0% {
+        box-shadow: 0 0 8px rgba(255, 215, 100, 0.4);
+        
+      }
+      50% {
+        box-shadow: 0 0 16px rgba(255, 200, 50, 0.8);
+        
+      }
+      100% {
+        box-shadow: 0 0 8px rgba(255, 215, 100, 0.4);
+        
+      }
+    }
+  `;
+  document.head.appendChild(styleTag);
+}
+
+// 📝 Update festive note content and visibility
+festiveNoteElement.innerText = festiveNote;
+festiveNoteElement.style.display = festiveNote ? 'block' : 'none';
+
+
 if (statusElement && timeInfoElement) {
   statusElement.innerHTML = `${statusMessage} ${statusIcon}`;
   timeInfoElement.innerText = timeInfoMessage;
   statusElement.className = statusClass;
   timeInfoElement.className = 'time-info';
+  festiveNoteElement.innerText = festiveNote;
+  festiveNoteElement.style.display = festiveNote ? 'block' : 'none';
 }
 
+
+// =============================
+// 📅 Weekly Hours Dropdown Animation
+// =============================
 if (weeklyHoursList) {
+  // Base weekly hours
   weeklyHoursList.innerHTML = `
     <li>Mon - Sat : 9 am - 10 pm</li>
-    <li>Sunday :  9 am -  2 pm</li>
-  `;
+    <li>Sunday : 9 am - 2 pm</li>
+  `
 }
+
 
 if (businessHoursElement && weeklyHoursElement) {
   businessHoursElement.addEventListener('click', () => {
@@ -174,9 +312,9 @@ if (businessHoursElement && weeklyHoursElement) {
 
     if (answer.classList.contains('show')) {
       // Closing
-      answer.style.height = answer.scrollHeight + "px"; // set current height
+      answer.style.height = answer.scrollHeight + "px";
       requestAnimationFrame(() => {
-        answer.style.height = "0px";        // animate to 0
+        answer.style.height = "0px";
         answer.style.opacity = "0";
         answer.style.paddingBottom = "0px";
         answer.style.marginTop = "0px";
@@ -203,7 +341,7 @@ if (businessHoursElement && weeklyHoursElement) {
 
       answer.addEventListener('transitionend', () => {
         if (answer.classList.contains('show')) {
-          answer.style.height = "auto"; // reset to auto
+          answer.style.height = "auto";
         }
       }, { once: true });
     }
@@ -213,11 +351,14 @@ if (businessHoursElement && weeklyHoursElement) {
   });
 }
 
-
+// =============================
+// 🏠 Border Color on Home Item
+// =============================
 if (homeItemElement) {
   homeItemElement.style.borderColor = statusClass === 'open' ? '#1db280' :
                                       statusClass === 'soon' ? '#ffa500' : '#ff0000';
 }
+
 
   // ================= FULLSCREEN GALLERY =================
   const galleryImages = document.querySelectorAll('.gallery-image');
