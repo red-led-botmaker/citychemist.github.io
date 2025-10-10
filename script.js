@@ -94,8 +94,8 @@ const weekdayHours = { open: 9, close: 22 };
 const sundayHours = { open: 9, close: 14 };
 
 // 🪔 Special Diwali timing (Set MM-DD correctly)
-const diwaliDate = '10-21'; //Diwali 
-const diwaliHours = { open: 9, close: 18 };
+const diwaliDate = '10-10'; //Diwali 
+const diwaliHours = { open: 9, close: 21 };
 
 // 📅 Fixed Holidays (MM-DD)
 const holidays = ['03-04']; //Holi
@@ -184,7 +184,7 @@ if (isHolidayToday) {
     statusClass = 'closed';
     statusIcon = '<div class="static-circle red"></div>';
   }
-  festiveNote = '🪔 Diwali Timings : 9 am – 6 pm';
+  festiveNote = '🪔 Karwachauth Timings : 9 am – 9 pm';
 
 } else if (opensSoon) {
   statusMessage = 'Opens soon';
@@ -302,6 +302,7 @@ if (weeklyHoursList) {
   weeklyHoursList.innerHTML = `
     <li>Mon - Sat : 9 am - 10 pm</li>
     <li>Sunday : 9 am - 2 pm</li>
+    <li>🪔 Diwali (20 Oct) : 9 am – 6 pm</li>
   `
 }
 
