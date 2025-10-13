@@ -302,30 +302,33 @@ outline: none !important;
     padding: 16px;
   }
 }
- 
+
 .hero-content {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 32px;
   min-height: 420px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.1) 0%, rgba(0.2, 0.2, 0.3, 0.6) 100%), url("out4.jpg");
+  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.1) 0%, rgba(0.2, 0.2, 0.3, 0.6) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   padding: 40px 16px;
   align-items: flex-start;
   justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
 }
+
 @media (min-width: 768px) {
   .hero-content {
     margin: 0 auto;
     width: 50%;
     height: 100%;
-    background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.1) 0%, rgba(0.2, 0.2, 0.3, 0.6) 100%), url("best.jpg");
+    /* No background-image here anymore */
   }
-
 }
+
 
 @media (min-width: 480px) {
   .hero-content {
@@ -593,19 +596,18 @@ color: #b1392f;
   color: #1f2937;
   font-family: 'Inter', 'Segoe UI', sans-serif;
   overflow: hidden;
+  margin-top: -50px;
 }
 
 /* === TOP DIVIDER === */
 .aboutus-top-divider {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
+  margin-top: -50px;
+  margin: 0 auto 50px;
+  width: 200px;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #1a8b7d, transparent);
-  border-radius: 4px;
-  margin-bottom: 20px;
+  background: linear-gradient(90deg, #10b981, #1a8b7d, #11a473);
+  border-radius: 99px;
+  
 }
 
 /* === IMAGE (TOP) === */
@@ -687,6 +689,9 @@ color: #b1392f;
 
 @media (max-width: 768px) {
   .aboutus-title {
+    font-size: 22px;
+  }
+  .section-title {
     font-size: 22px;
   }
 }
@@ -866,6 +871,7 @@ color: #b1392f;
   background: #f7fcfc;
   text-align: center;
   font-family: "Segoe UI", sans-serif;
+  margin-top: -50px;
 }
 .pharma-about-divider1 {
   display: flex;
@@ -956,115 +962,20 @@ color: #b1392f;
   transition: transform 0.3s ease;
 }
 
-.service-image1 {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 180px;
-
-  height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ipm.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 16px;
-  align-items: center;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
-}
-.service-image1:hover {
-  transform: scale(1.02);
-}
-.service-image2 {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 180px;
-
-  height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("iov.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 16px;
-  align-items: center;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
-}
-.service-image2:hover {
-  transform: scale(1.02);
-}
-.service-image3 {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 180px;
-
-  height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ib.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 16px;
-  align-items: center;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
-}
-.service-image3:hover {
-  transform: scale(1.02);
-}
-.service-image4 {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 180px;
-
-  height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("ihp.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 16px;
-  align-items: center;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
-}
-.service-image4:hover {
-  transform: scale(1.02);
-}
-.service-image5 {
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  min-width: 180px;
-
-  height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("isur.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 40px 16px;
-  align-items: center;
-  justify-content: flex-end;
-  transition: transform 0.3s ease;
-}
-.service-image5:hover {
-  transform: scale(1.02);
-}
+.service-image1,
+.service-image2,
+.service-image3,
+.service-image4,
+.service-image5,
 .service-image6 {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 32px;
   min-width: 180px;
-
   height: 180px;
-  background-image: linear-gradient(rgba(0.2, 0.2, 0.2, 0.2) 0%, rgba(0.2, 0.2, 0.3, 0.67) 100%), url("iw1.jpg");
+  /* gradient only — image will be injected via JS */
+  background-image: linear-gradient(rgba(0.2,0.2,0.2,0.2) 0%, rgba(0.2,0.2,0.3,0.67) 100%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -1072,29 +983,11 @@ color: #b1392f;
   align-items: center;
   justify-content: flex-end;
   transition: transform 0.3s ease;
+  position: relative;   /* IMPORTANT for clipping */
+  overflow: hidden;     /* IMPORTANT for rounded corners */
 }
-.service-image6:hover {
-  transform: scale(1.02);
-}
-.color11{
-  color: #197dc4;
-}
-.fa-file-prescription{
-  color: #1db280;
-}
-.fa-bottle-baby{
-  
-  color: #ff69b4;
-}
-.fa-glass-water-droplet{
-  color: #00bfff;
-}
-.fa-prescription-bottle{
-  color: #ffa500;
-}
-.fa-wheelchair{
-  color: #008000;
-}
+
+
 .service-text {
   align-items: left;
   color: #ffffff;
@@ -1207,7 +1100,7 @@ color: #b1392f;
 
 /* Contact Section Styles */
 .contact-sectiont {
-  
+  background-color: #f7fcfc;
   padding: 18px;
   margin-bottom: -30px;
 }
@@ -1599,7 +1492,25 @@ color: #b1392f;
 }
 
 /* Existing styles remain unchanged, adding and updating styles below */
-
+.Updates-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 18px;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory;
+  
+}
+.Updates-grid::-webkit-scrollbar {
+  display: none;
+}
+.Updates-section {
+  padding: 50px 20px;
+  background: #f7fcfc;
+  font-family: "Segoe UI", sans-serif;
+  margin-top: -70px;
+}
 /* Update Detail Section */
 .update-detail-section {
   padding: 16px;
@@ -2238,6 +2149,15 @@ backdrop-filter: blur(2px);
   .header {
     padding: 16px 16px 8px;
   }
+  .Updates-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .Updates-grid {
+    align-items: center;
+  justify-content: center;
+  }
   .aboutus-image-wrapper {
     width: 40%;
   }
@@ -2577,18 +2497,50 @@ backdrop-filter: blur(2px);
   letter-spacing: 0.3px;
   margin-bottom: 8px;
 }
+.announcement-badge2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #3d7e47;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+  letter-spacing: 0.3px;
+  margin-bottom: 0px;
+}
 .pinned-update {
-   display: flex;
+  display: flex;
   flex-direction: column;
+  min-width: 280px;
   max-width: 400px;
-  margin: 0 auto;
-  background: linear-gradient(135deg, #dcf3e7 10%, #d9ebe2 100%);
+  background: #e2eee8;
   border-radius: 16px;
   padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: #008000 1px solid;
 }
-
+.pinned-update1 {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  max-width: 400px;
+  background: #cef1f3;
+  border-radius: 16px;
+  padding: 20px;
+  border: #316c6c 1px solid;
+}
+.pinned-update2 {
+  display: flex;
+  flex-direction: column;
+  min-width: 280px;
+  max-width: 400px;
+  background: transparent;
+  border-radius: 16px;
+  padding: 20px;
+  border: #619090 1px solid;
+}
 
 
 
@@ -2655,10 +2607,13 @@ backdrop-filter: blur(2px);
 
 /* ✅ Responsive Adjustments */
 @media (min-width: 600px) {
-  .pinned-update {
+  .pinned-update,
+  .pinned-update1,
+  .pinned-update2 {
     max-width: 300px;
     padding: 24px;
   }
+
   .pinned-header h2 {
     font-size: 1.2rem;
   }
@@ -2672,10 +2627,17 @@ backdrop-filter: blur(2px);
 }
 
 @media (min-width: 900px) {
-  .pinned-update {
-    max-height: 500px;
-    max-width: 500px;
+  .pinned-update,
+  .pinned-update1,
+  .pinned-update2 {
+    max-height: 400px;
+    max-width: 400px;
   }
+  .pinned-btn {
+    font-size: 1rem;
+    padding: 18px 18px;
+  }
+   
   .pinned-image {
     
     display: block;
@@ -2707,7 +2669,10 @@ backdrop-filter: blur(2px);
     text-align: center;
   }
   .section-title{
-    font-size: 25px;
+    font-size: 33px;
+  }
+  .services-title{
+    font-size: 33px;
   }
   .ahero-title {
     margin-bottom: 20px;
@@ -2726,8 +2691,10 @@ backdrop-filter: blur(2px);
   
 }
 @media (max-width:768px){
-  .pinned-update {
-    max-width: 90%;
+  .pinned-update ,
+  .pinned-update1 ,
+  .pinned-update2 {
+    max-width: 0%;
     padding: 20px;
   }
 }
