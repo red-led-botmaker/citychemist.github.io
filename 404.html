@@ -39,14 +39,51 @@ outline: none !important;
       min-height: 100vh;
       text-align: center;
     }
-.abtn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .3s ease;font-size:14px}
 
-    .abtn-ghost{background:transparent;color:black;border:2px solid rgba(0,128,128,0.25)}
-    .abtn-ghost:hover{  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-     border: 2px solid #1a8b7d;
-     color: #1a8b7d;
-    }
+.btn {
+  text-decoration: none;
+  color: #101618;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 9999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+.btn-secondary {
+  color: #101618;
+  border: 1px solid #e5e7eb;
+  background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
+  color: #111;
+  
+}
+.btn-secondary:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border: 1px solid #1a8b7d;
+  color: #1a8b7d;
+  background: linear-gradient(145deg, #e4e9ec, #d8dee2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
 
+.btn-secondary:active {
+  border: 1px solid #1a8b7d;
+  color: #1a8b7d;
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
+}
     .container {
       max-width: 600px;
       padding: 2rem;
@@ -155,7 +192,7 @@ outline: none !important;
     <h2>Page Not Found</h2>
     <p class="txt"><i class="fa-solid fa-info-circle"></i> The page you’re trying to reach doesn’t exist or has been moved.  
     </p>
-<a href="/index.html" class="abtn abtn-ghost">Back to Home</a>
+<a style="text-decoration:none" href="/index.html" class="btn btn-secondary">Back to Home</a>
 </div>
 </body>
 </html>
