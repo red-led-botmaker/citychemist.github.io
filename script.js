@@ -184,7 +184,7 @@ if (isHolidayToday) {
     statusClass = 'closed';
     statusIcon = '<div class="static-circle red"></div>';
   }
-  festiveNote = '🪔 Diwali Timings : 9 am – 9 pm';
+  festiveNote = '🪔 Diwali Timings : 9 am – 6 pm';
 
 } else if (opensSoon) {
   statusMessage = 'Opens soon';
