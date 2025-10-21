@@ -302,7 +302,7 @@ if (weeklyHoursList) {
   weeklyHoursList.innerHTML = `
     <li>Mon - Sat : 9 am - 10 pm</li>
     <li>Sunday : 9 am - 2 pm</li>
-    <li>🪔 Diwali (20 Oct) : 9 am – 6 pm</li>
+    
   `
 }
 
