@@ -609,7 +609,15 @@ color: #b1392f;
   border-radius: 99px;
   
 }
-
+.updates-section-divider {
+  
+  margin: 0 auto;
+  width: 300px;
+  height: 3px;
+  background: #0d9568;
+  border-radius: 99px;
+  margin-top: 50px;
+}
 /* === IMAGE (TOP) === */
 .aboutus-image-wrapper {
   position: relative;
@@ -1173,6 +1181,12 @@ color: #b1392f;
   margin: 32px auto;
   width: 100%; /* adjust length */
 }
+.divider {
+  border: none;
+  border-top: 3px solid #50a181;
+  margin: 32px auto;
+  width: 100%; /* adjust length */
+}
 
 
 
@@ -1506,10 +1520,11 @@ color: #b1392f;
   display: none;
 }
 .Updates-section {
-  padding: 50px 20px;
+  padding: 20px;
   background: #f7fcfc;
   font-family: "Segoe UI", sans-serif;
-  margin-top: -70px;
+  margin-top: -30px;
+
 }
 /* Update Detail Section */
 .update-detail-section {
@@ -2524,7 +2539,7 @@ backdrop-filter: blur(2px);
 .pinned-update1 {
   display: flex;
   flex-direction: column;
-  min-width: 280px;
+  min-width: 320px;
   max-width: 400px;
   background: #cef1f3;
   border-radius: 16px;
