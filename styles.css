@@ -416,29 +416,83 @@ color: #b1392f;
 }
 
 .btn-secondary {
+    display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;       /* compact width */
+  height: 40px;           /* reduced height */
+  padding: 0 20px;
+  border-radius: 15px;     /* modern subtle rounding */
+  font-size: 14px;        /* professional readable font */
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  border: none;
+  transition: all 0.25s ease;
+  user-select: none;
   color: #101618;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #05563d; 
   background: linear-gradient(145deg, #f3f5f6, #e4e9ec);
-  color: #111;
-  
-}
-.btn-secondary:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  border: 1px solid #1a8b7d;
-  color: #1a8b7d;
-  background: linear-gradient(145deg, #e4e9ec, #d8dee2);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
 
-.btn-secondary:active {
-  border: 1px solid #1a8b7d;
-  color: #1a8b7d;
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05) inset;
+/* Hover Effects */
+.btn-secondary:hover {
+  background: linear-gradient(135deg, #e0f3eb, #c3e8db);
+  color: #1a8b7d;         /* accent green text */
+  border-color: #1a8b7d;
+  
 }
+
+/* Active / Pressed */
+.btn-secondary:active {
+  
+  background: linear-gradient(135deg, #c3e8db, #a6dcc7);
+  color: #0e4b42;
+}
+
+/* Focus / Accessibility */
+.btn-secondary:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(26,139,125,0.2); /* subtle focus ring */
+}
+
+/* Animated underline */
+.btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #1a8b7d;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+.btn:active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* Gradient text accent (optional) */
+.btn-secondary span {
+  display: inline-block;
+  background: linear-gradient(90deg, #0f5c50, #1a8b7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover span {
+  background: linear-gradient(90deg, #1a8b7d, #0f5c50);
+}
+
 .btn-secondary1 {
   color: #101618;
   border: 2px solid #e2e6ee;
@@ -490,19 +544,19 @@ color: #b1392f;
 }
 
 .open {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 17px;
   color: #1db280;
 }
 
 .closed {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 17px;
   color: #ff0000;
 }
 
 .soon {
-  font-weight: 500;
+  font-weight: 600;
   color: #ffa500;
   font-size: 17px;
 }
@@ -879,7 +933,7 @@ color: #b1392f;
   background: #f7fcfc;
   text-align: center;
   font-family: "Segoe UI", sans-serif;
-  margin-top: -50px;
+  
 }
 .pharma-about-divider1 {
   display: flex;
@@ -1181,12 +1235,7 @@ color: #b1392f;
   margin: 32px auto;
   width: 100%; /* adjust length */
 }
-.divider {
-  border: none;
-  border-top: 3px solid #50a181;
-  margin: 32px auto;
-  width: 100%; /* adjust length */
-}
+
 
 
 
@@ -1523,7 +1572,7 @@ color: #b1392f;
   padding: 20px;
   background: #f7fcfc;
   font-family: "Segoe UI", sans-serif;
-  margin-top: -30px;
+  margin-top: -80px;
 
 }
 /* Update Detail Section */
@@ -1675,8 +1724,8 @@ color: #b1392f;
 
 .faq-item {
   margin-bottom: 12px;
-  border-bottom: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border-bottom: 1px solid #cccccc;
+  
   overflow: hidden;
   
 }
@@ -2364,7 +2413,23 @@ backdrop-filter: blur(2px);
      transform: translateY(-2px);
      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
 }
+.abtn:after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  width: 80%;
+  height: 2px;
+  background-color: #1a8b7d;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.25s ease;
+}
 
+.abtn:active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
     .ahero-image{
         border-radius:16px;
         overflow:hidden;
@@ -2517,15 +2582,34 @@ backdrop-filter: blur(2px);
   align-items: center;
   gap: 6px;
   background: transparent;
-  color: #3d7e47;
+  color: #2f986c;
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 0.8rem;
   font-weight: 600;
   width: fit-content;
   letter-spacing: 0.3px;
-  margin-bottom: 0px;
+  margin-bottom: 3px;
+  margin-top: -11px;
+  margin-left: -10px;
 }
+.announcement-badge3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: #2f986c;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  width: fit-content;
+  letter-spacing: 0.3px;
+  margin-bottom: -10px;
+  margin-left: -10px;
+  
+}
+
 .pinned-update {
   display: flex;
   flex-direction: column;
@@ -2539,7 +2623,7 @@ backdrop-filter: blur(2px);
 .pinned-update1 {
   display: flex;
   flex-direction: column;
-  min-width: 320px;
+  min-width: 280px;
   max-width: 400px;
   background: #cef1f3;
   border-radius: 16px;
@@ -2608,8 +2692,6 @@ backdrop-filter: blur(2px);
   white-space: nowrap;
   transition: all 0.25s ease;
   text-decoration: none;
-  
-  border: 2px solid #e2e6ee;
   background-color: #39906d;
   color: white;
  
